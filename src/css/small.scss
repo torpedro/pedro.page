@@ -3,5 +3,29 @@
  * width < 600
  */
 @media (max-width: 599px) {
-  
+  .page {
+    .content {
+      .social-media {
+        a {
+          margin: 0px 25px;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Extra Small Screens
+ * width < 300px
+ */
+@media (max-width: 299px) {
+  .page {
+    .content {
+      .social-media {
+        a {
+          margin: 0px 15px;
+        }
+      }
+    }
+  }
 }
