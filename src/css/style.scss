@@ -7,226 +7,226 @@ $font-size-standard: 15px;
 $font-size-large: 18px;
 
 html, body {
-	height: 100%;
-	margin: 0px;
-	padding: 0px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-	background-color: black;
+  background-color: black;
 }
 
 a,
 a:active,
 a:visited,
 a:focus {
-	cursor: pointer;
-	text-decoration: none;
-	color: $general-text-color;
+  cursor: pointer;
+  text-decoration: none;
+  color: $general-text-color;
 }
 
 a:hover {
-	color: $general-text-color-hover;
-	text-decoration: none;
+  color: $general-text-color-hover;
+  text-decoration: none;
 }
 
 
 
 .page {
-	font-family: 'Open Sans';
-    font-size: $font-size-standard;
-	color: $general-text-color;
-	text-align: center;
+  font-family: 'Open Sans';
+  font-size: $font-size-standard;
+  color: $general-text-color;
+  text-align: center;
 
-    @import "icons";
-    @import "header";
+  @import "icons";
+  @import "header";
 
-    .page-inner-box {
-        // wrapper around header and content
-        // defines with of entire content area
-        width: 95%;
-        max-width: 1400px;
-        margin: auto;
-        position: relative;
+  .page-inner-box {
+    // wrapper around header and content
+    // defines with of entire content area
+    width: 95%;
+    max-width: 1400px;
+    margin: auto;
+    position: relative;
+  }
+
+
+  .content {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+
+    perspective: 500px;
+
+    $opacity-transition: opacity 0.0s ease-in-out 0.16s;
+    $transform-transition: transform 0.8s 0.0s cubic-bezier(.07,.66,.6,.8);
+    // property, duration, delay
+    transition: $transform-transition, $opacity-transition;
+    -webkit-transition: $transform-transition, $opacity-transition;
+
+    .project-list {
+      width: 100%;
+      max-width: 850px;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      .tile {
+        a {
+          display: block;
+          margin: 10px 0px 0px 0px;
+          background-color: $content-bg-color;
+          border: 1px solid $border-color;
+          padding: 6px 0px 10px 0px;
+
+          &:hover {
+            background-color: lighten($content-bg-color, 15%);
+            border-color: lighten($border-color, 15%);
+          }
+
+          h1 {
+            font-size: 18pt;
+            color: $general-text-color;
+          }
+
+          h2 {
+            font-size: $font-size-standard;
+            color: darken($general-text-color, 20%);
+          }
+        }
+      }
+    } // .project-list
+
+    .welcome {
+      display: block;
+      max-width: 850px;
+      margin: 10px 0px 0px 0px;
+      background-color: $content-bg-color;
+      border: 1px solid $border-color;
+      padding: 5px 10px 8px 10px;
+      text-align: left;
+
+      .title {
+        color: lighten(black, 50%);
+
+      }
+
+      ul {
+        margin: 0px;
+        padding: 0px 0px 0px 25px;
+      }
     }
 
+    .about {
+      max-width: 850px;
+      width: 100%;
+      margin: 10px auto 0px auto;
 
-    .content {
+      background-color: $content-bg-color;
+      border: 1px solid $border-color;
+      text-align: left;
+
+      padding: 0px 0px;
+      h1 {
+        font-size: 18pt;
+        margin-left: 10px;
+      }
+
+      h2 {
+        font-size: $font-size-standard;
+        margin-left: 10px;
+        color: lighten(black, 50%);
+        font-weight: 500;
+      }
+
+      p {
+        font-size: $font-size-standard;
+        padding: 3px 10px;
+        text-align: left;
+
+        &:nth-of-type(1) {
+          padding-top: 0px;
+        }
+      }
+
+      .dash.visible {
         width: 100%;
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0px 10px;
+
+        max-width: 350px;
         margin: auto;
-        position: absolute;
 
-        perspective: 500px;
+        .tile {
+          display: block;
+          width: 70px;
+          min-height: 30px;
+          margin: 5px 0px;
+          text-align: center;
 
-        $opacity-transition: opacity 0.0s ease-in-out 0.16s;
-        $transform-transition: transform 0.8s 0.0s cubic-bezier(.07,.66,.6,.8);
-        // property, duration, delay
-        transition: $transform-transition, $opacity-transition;
-        -webkit-transition: $transform-transition, $opacity-transition;
-
-        .project-list {
-            width: 100%;
-            max-width: 850px;
-
-            display: flex;
-            flex-wrap: wrap;
-
-            .tile {
-                a {
-                    display: block;
-                    margin: 10px 0px 0px 0px;
-                    background-color: $content-bg-color;
-                    border: 1px solid $border-color;
-                    padding: 6px 0px 10px 0px;
-
-                    &:hover {
-                        background-color: lighten($content-bg-color, 15%);
-                        border-color: lighten($border-color, 15%);
-                    }
-
-                    h1 {
-                        font-size: 18pt;
-                        color: $general-text-color;
-                    }
-
-                    h2 {
-                        font-size: $font-size-standard;
-                        color: darken($general-text-color, 20%);
-                    }
-                }
-            }
-        } // .project-list
-
-        .welcome {
-            display: block;
-            max-width: 850px;
-            margin: 10px 0px 0px 0px;
-            background-color: $content-bg-color;
-            border: 1px solid $border-color;
-            padding: 5px 10px 8px 10px;
-            text-align: left;
-
-            .title {
-                color: lighten(black, 50%);
-
-            }
-
-            ul {
-                margin: 0px;
-                padding: 0px 0px 0px 25px;
-            }
+          .icon {
+            display: inline-block;
+          }
         }
-
-        .about {
-            max-width: 850px;
-            width: 100%;
-            margin: 10px auto 0px auto;
-
-            background-color: $content-bg-color;
-            border: 1px solid $border-color;
-            text-align: left;
-
-            padding: 0px 0px;
-            h1 {
-                font-size: 18pt;
-                margin-left: 10px;
-            }
-
-            h2 {
-                font-size: $font-size-standard;
-                margin-left: 10px;
-                color: lighten(black, 50%);
-                font-weight: 500;
-            }
-
-            p {
-                font-size: $font-size-standard;
-                padding: 3px 10px;
-                text-align: left;
-
-                &:nth-of-type(1) {
-                    padding-top: 0px;
-                }
-            }
-
-            .dash.visible {
-                width: 100%;
-            }
-
-            .contact {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                align-items: center;
-                padding: 0px 10px;
-
-                max-width: 350px;
-                margin: auto;
-
-                .tile {
-                    display: block;
-                    width: 70px;
-                    min-height: 30px;
-                    margin: 5px 0px;
-                    text-align: center;
-
-                    .icon {
-                        display: inline-block;
-                    }
-                }
-            }
-        }
-    } // .content
+      }
+    }
+  } // .content
 } // .page
 
 
 // section usually within .content
 .section {
-    padding: 5px 3px;
+  padding: 5px 3px;
 
-    ul {
-        margin: 4px 0px 0px 0px;
-        padding: 0px 0px 0px 5px;
+  ul {
+    margin: 4px 0px 0px 0px;
+    padding: 0px 0px 0px 5px;
 
-        > li {
-            margin-bottom: 5px;
-            padding-left: 5px;
-            display: flex;
-            line-height: 16px;
+    > li {
+      margin-bottom: 5px;
+      padding-left: 5px;
+      display: flex;
+      line-height: 16px;
 
-            > div:first-child {
-                // year label
-                color: lighten(black, 50%);
-                font-weight: 500;
-                display: block;
-                padding-right: 5px;
-                flex-shrink: 0;
-            }
+      > div:first-child {
+        // year label
+        color: lighten(black, 50%);
+        font-weight: 500;
+        display: block;
+        padding-right: 5px;
+        flex-shrink: 0;
+      }
 
-            > div:last-child {
-                // position label
-                font-weight: 500;
-            }
+      > div:last-child {
+        // position label
+        font-weight: 500;
+      }
 
-            a {
-                color: lighten(black, 60%);
+      a {
+        color: lighten(black, 60%);
 
-                &:hover {
-                    color: white;
-                }
-            }
+        &:hover {
+          color: white;
         }
+      }
     }
+  }
 
-    &.professional-history {
-        text-align: left;
-        font-size: $font-size-standard;
-    } // .professional-history
+  &.professional-history {
+    text-align: left;
+    font-size: $font-size-standard;
+  } // .professional-history
 
-    &.publications {
-        text-align: left;
-        font-size: $font-size-standard;
-    } // .professional-history
+  &.publications {
+    text-align: left;
+    font-size: $font-size-standard;
+  } // .professional-history
 } // .section
 
 
@@ -235,23 +235,21 @@ a:hover {
 // Disable all special styling of h-tags
 // We basically use them as divs with importance index
 h1, h2, h3, h4, h5, h6 {
-	display: block;
-	margin: 0px;
-	line-height: normal;
-    font-weight: 300;
+  display: block;
+  margin: 0px;
+  line-height: normal;
+  font-weight: 300;
 }
 p {
-	margin: 0px;
+  margin: 0px;
 }
 .background {
-	position: fixed;
-	z-index: -100;
-	width: 100%;
-	height: 100%;
+  position: fixed;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
 
-	background-image: url('img/website_bg1_web.jpg');
-	background-position: right bottom;
-	background-size: cover;
+  background-image: url('img/website_bg1_web.jpg');
+  background-position: right bottom;
+  background-size: cover;
 }
-
-

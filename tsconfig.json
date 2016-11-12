@@ -1,7 +1,7 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "jsx": "react"
-    },
-    "files": []
+  "compilerOptions": {
+    "module": "commonjs",
+    "jsx": "react"
+  },
+  "files": []
 }
