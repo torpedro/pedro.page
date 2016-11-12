@@ -3,58 +3,5 @@
  * 600 <= width < 900
  */
 @media (min-width: 600px) and (max-width: 899px) {
-  .page {        
-    .header {
-      .title {
-        width: 60%;
-        text-align: left;
-        display: flex;
-        
-        .me-image {
-          position: relative;
-          display: inline-block;
-          width: 50px;
-          padding-left: 15px;
-          top: 1px;
-        }
-        
-        .text {
-          display: inline-block;
-          padding-left: 0px;
-        }
-      }
-      .social-media {
-        justify-content: flex-end;
-        width: 40%;
-
-        a {
-          margin-right: 20px;
-        }
-      }
-      .navigation {
-        padding-top: 5px;
-        padding-bottom: 12px;
-      }
-      padding-top: 20px;
-    }
-
-    .content {
-      justify-content: flex-end;
-      width: 100%;
-      
-      .project-list {
-        justify-content: space-between;
-
-        .tile {
-          width: calc(50% - 5px);
-        }
-      }
-
-      .social-media {
-        .contact {
-          max-width: 300px;
-        }
-      }
-    }
-  }
+  
 }
