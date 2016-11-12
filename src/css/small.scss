@@ -3,41 +3,27 @@
  * width < 600
  */
 @media (max-width: 599px) {
-  .page {        
-    .header {
-      .me-image {
-        display: block;
-        width: 100%;
-        height: 75px;
-      }
-      .title {
-        width: 100%;
-      }
+  .page {
+    .content {
       .social-media {
-        width: 100%;
-        max-width: 200px;
-      }
-      .navigation {
-        padding-top: 5px;
-        padding-bottom: 12px;
+        a {
+          margin: 0px 25px;
+        }
       }
     }
-    .content {
-      justify-content: space-between;
-      width: 100%;
-      
-      .project-list {
-        width: 100%;
-        margin: auto;
-        justify-content: space-around;
+  }
+}
 
-        .tile {
-          width: 100%;
-          
-          a {
-            margin-left: 0px;
-            margin-right: 0px;
-          }
+/**
+ * Extra Small Screens
+ * width < 300px
+ */
+@media (max-width: 299px) {
+  .page {
+    .content {
+      .social-media {
+        a {
+          margin: 0px 15px;
         }
       }
     }

@@ -27,6 +27,14 @@
     filter: invert(100%);
     -webkit-filter: invert(100%);
   }
+
+  
+  &.github-large {
+    background-image: url('img/github-light-120px.png');
+    background-position-y: 0px;
+    width: 120px;
+    height: 120px;   
+  }
   
   &:hover { // Link-Hover
     opacity: 1.0;
