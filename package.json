@@ -13,6 +13,7 @@
     "classnames": "^2.2.3",
     "css-loader": "^0.25.0",
     "grd": "^1.2.2",
+    "nanoajax": "^0.4.3",
     "node-sass": "^3.4.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

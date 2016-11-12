@@ -1,5 +1,7 @@
 
 import { PageContent } from "./PageContent";
+import * as nanoajax from "nanoajax";
+
 
 export class Page {
   private root: HTMLElement;
@@ -11,17 +13,18 @@ export class Page {
 
   constructor(root: HTMLElement) {
     this.root = root;
-    this.inTransition = false;
-    this.routeAliases = {
-      "": "projects" // default route
-    };
+    // this.inTransition = false;
+    // this.routeAliases = {
+    //   "": "home" // default route
+    // };
 
-    this.initNavigation();
-    this.openInitialPage();
+    // this.initNavigation();
+    // this.openInitialPage();
 
-    window.setTimeout(() => {
-      this.startBorderAnimation();
-    }, 100);
+    // window.setTimeout(() => {
+    //   this.startBorderAnimation();
+    // }, 100);
+
   }
 
   private startBorderAnimation() {
