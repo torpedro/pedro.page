@@ -2,4 +2,5 @@
 # Allow everything.
 
 User-agent: *
+Sitemap: http://torpedro.com/sitemap.xml
 Disallow:
