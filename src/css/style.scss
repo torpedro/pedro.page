@@ -54,22 +54,40 @@ a:hover {
     padding: 3vw;
 
     .title {
-      font-size: 40px;
       font-weight: 300;
-      b {
+      display: inline-block;
+      margin: auto;
+
+      span {
+        display: block;
+      }
+
+      .hi {
+        text-align: left;
+        font-size: 19px;
+        line-height: 16px;
+        padding: 0px 2px;
+      }
+      .name {
+        font-size: 40px;
+        line-height: 38px;
         font-weight: 500;
+      }
+
+      .brief {
+        text-align: right;
+        padding: 0px 2px;
+        font-size: 19px;
       }
     }
 
-    .brief {
-      padding-left: 2px;
-      font-size: 19px;
-    }
 
     .social-media {
+      display: flex;
+      justify-content: space-around;
       a {
         display: inline-block;
-        margin: 0px 50px;
+        margin: 0px 0px;
       }
     }
 

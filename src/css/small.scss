@@ -2,28 +2,31 @@
  * Small Screens
  * width < 600
  */
-@media (max-width: 599px) {
+@media (max-width: 499px) {
   .page {
     .content {
-      .social-media {
-        a {
-          margin: 0px 25px;
-        }
-      }
+
     }
   }
 }
 
 /**
  * Extra Small Screens
- * width < 300px
+ * width < 350px
  */
-@media (max-width: 299px) {
+@media (max-width: 349px) {
   .page {
     .content {
-      .social-media {
-        a {
-          margin: 0px 15px;
+      .title {
+        .hi {
+          display: none;
+        }
+        .name {
+          font-size: 11vw;
+        }
+        .brief {
+          text-align: center;
+          font-size: 7vw;
         }
       }
     }
