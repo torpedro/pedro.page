@@ -25,7 +25,7 @@ typings install
 
 ### Global Tools
 
- * [typings](https://github.com/typings/typings) (npm install -g typings)
+ * [typings](https://github.com/typings/typings) (`npm install -g typings`)
 
 ### Setting up latest version of Node
 
