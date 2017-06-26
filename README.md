@@ -46,9 +46,5 @@ I'm using [Let's Encrypt](https://letsencrypt.org/) to get a free HTTPS certific
  * [Certbot - Documentation](https://certbot.eff.org/)
  
 ```bash
-# Run the certbot.
-./certbot-auto
-
-# Renew all certificates.
-./certbot-auto renew
+sudo certbot renew
 ```
