@@ -25,7 +25,7 @@ typings install
 
 ### Global Tools
 
- * [typings](https://github.com/typings/typings) (npm install -g typings)
+ * [typings](https://github.com/typings/typings) (`npm install -g typings`)
 
 ### Setting up latest version of Node
 
@@ -46,9 +46,5 @@ I'm using [Let's Encrypt](https://letsencrypt.org/) to get a free HTTPS certific
  * [Certbot - Documentation](https://certbot.eff.org/)
  
 ```bash
-# Run the certbot.
-./certbot-auto
-
-# Renew all certificates.
-./certbot-auto renew
+sudo certbot renew
 ```
