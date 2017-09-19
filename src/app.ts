@@ -10,3 +10,4 @@ import { Page } from "./Page";
 
 let page: Page = new Page(<HTMLElement>document.querySelector("#app"));
 window["page"] = page;
+
