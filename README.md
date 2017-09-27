@@ -34,8 +34,8 @@ Use [nvm (node version manager)](https://github.com/creationix/nvm).
 Get the latest nodejs version:
 
 ```bash
-nvm install 5.0
-nvm use 5.0
+nvm install 6.10
+nvm use 6.10
 ```
 
 ## HTTPS Certificate
@@ -44,7 +44,7 @@ I'm using [Let's Encrypt](https://letsencrypt.org/) to get a free HTTPS certific
 
  * [Let's Encrypt - Getting Started](https://letsencrypt.org/getting-started/)
  * [Certbot - Documentation](https://certbot.eff.org/)
- 
+
 ```bash
 sudo certbot renew
 ```
