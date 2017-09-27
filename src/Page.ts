@@ -10,3 +10,4 @@ export class Page {
     this.root = root;
   }
 }
+
