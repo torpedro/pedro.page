@@ -1,5 +1,3 @@
-/// <reference path="../typings/all.d.ts" />
-
 // CSS stylesheets
 require("./css/style.scss");
 require("./css/small.scss");
