@@ -1,7 +1,7 @@
 node_modules/
 npm-debug.log
 
-build/
+public/
 bundle.js
 src/bundle.js
 google*.html
