@@ -1,0 +1,163 @@
+@import 'base';
+
+html,
+body,
+div#root {
+    @include full-page;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Raleway';
+    color: rgb(230,230,230);
+    font-weight: 300;
+}
+
+div, a {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(230,230,230);
+    font-weight: 300;
+}
+
+h1, h2, h3, a, p {
+    margin: 0px;
+    padding: 0px;
+    font-weight: inherit;
+}
+
+body {
+    background-image: url('images/city-of-london-1920.jpg');
+    background-size: cover;
+}
+
+@media (min-aspect-ratio: 4/3) {
+    body {
+        background-position-x: center;
+        background-position-y: 20%;
+    }
+}
+@media (max-aspect-ratio: 4/3) {
+    body {
+        background-position-x: center;
+        background-position-y: 0%;
+    }
+}
+
+#main {
+    text-align: center;
+}
+
+#brand {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    width: 380px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0px 0px 15px 0px;
+}
+
+#name {
+
+    display: block;
+    background-color: rgba(0, 0, 0, 0.0);
+    padding: 15px 5px 20px 5px;
+    border-radius: 0px;
+    border: rgba(0, 0, 0, 0.0) solid 1px;
+
+    h1 {
+        display: block;
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}
+
+#icons {
+    text-align: center;
+
+    a.icon {
+        margin: auto;
+        display: inline-block;
+        width: 26px;
+        height: 40px;
+        margin: 0px 30px;
+
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        opacity: 0.75;
+
+        &.github {
+            background-image: url('images/github-light-64px.png');
+            background-position-y: 8px;
+            width: 40px;
+            height: 52px;
+        }
+        &.linkedin {
+            background-image: url('images/linkedin-white-34px.png');
+            background-position-y: 11px;
+
+            width: 30px;
+            height: 42px;
+        }
+        &.instagram {
+            background-image: url('images/instagram-dark.png');
+            background-position-y: 8px;
+            filter: invert(100%) brightness(150%);
+            -webkit-filter: invert(100%) brightness(150%);
+        }
+
+        &.github-large {
+            background-image: url('images/github-light-120px.png');
+            background-position-y: 0px;
+            width: 120px;
+            height: 120px;
+        }
+
+        &:hover { // Link-Hover
+            opacity: 1.0;
+        }
+    }
+}
+
+#projects {
+    width: 300px;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 5px;
+    >p {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    a {
+        margin: 10px auto;
+        width: 100%;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 6px 0px;
+        h1 {
+            font-size: 22px;
+        }
+        h2 {
+            margin-top: 3px;
+            font-size: 14px;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+
+        }
+    }
+}
