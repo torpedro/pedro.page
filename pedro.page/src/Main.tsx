@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Project } from "./Project";
 
 export interface IMainProps {
 }
@@ -20,9 +21,9 @@ export class Main extends React.Component<IMainProps, {}> {
                             <h2>Software Engineer in London, UK</h2>
                         </div>
                         <div id="icons">
-                            <a target="blank" className="icon linkedin" href="https://www.linkedin.com/in/pedroflemming"></a>
-                            <a target="blank" className="icon github" href="https://github.com/torpedro"></a>
-                            <a target="blank" className="icon instagram" href="https://www.instagram.com/thetorpedro/"></a>
+                            <a className="icon linkedin" href="https://www.linkedin.com/in/pedroflemming"></a>
+                            <a className="icon github" href="https://github.com/torpedro"></a>
+                            <a className="icon instagram" href="https://www.instagram.com/thetorpedro/"></a>
                         </div>
                     </div>
                 </div>
@@ -33,26 +34,10 @@ export class Main extends React.Component<IMainProps, {}> {
                     </div>
                     <div id="content">
                         <div id="projects">
-                            <a target="blank" href="https://github.com/hyrise/sql-parser">
-                                <h1>SQL Parser</h1>
-                                <h2>C++ Library</h2>
-                            </a>
-                            <a target="blank" href="https://github.com/torpedro/gdrive-lib">
-                                <h1>gdrive</h1>
-                                <h2>CLI &amp; Python Library</h2>
-                            </a>
-                            <a target="blank" href="https://hpi.de/plattner/projects/project-archive/pos-explorer.html">
-                                <h1>POS Explorer</h1>
-                                <h2>ERP Application</h2>
-                            </a>
-                            <a target="blank" href="https://github.com/torpedro/microtest.h">
-                                <h1>microtest.h</h1>
-                                <h2>C++ Library</h2>
-                            </a>
-                            <a target="blank" href="https://epic-circles.torpedro.com">
-                                <h1>Epic Circles</h1>
-                                <h2>JavaScript</h2>
-                            </a>
+                            <Project title="C++ SQL Parser" subtitle="" url="https://github.com/hyrise/sql-parser" description="Open-source C++ SQL Parser that I've built for a research database at my university. It can be integrated into any application. Click to visit the GitHub page of the project." />
+                            <Project title="gdrive" subtitle="CLI &amp; Python Library" url="https://github.com/torpedro/gdrive-lib" />
+                            <Project title="POS Explorer" subtitle="CLI &amp; Python Library" url="https://hpi.de/plattner/projects/project-archive/pos-explorer.html" />
+                            <Project title="microtest.h" subtitle="C++ Library" url="https://github.com/torpedro/microtest.h" />
                         </div>
                     </div>
                 </div>

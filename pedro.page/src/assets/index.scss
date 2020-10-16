@@ -36,6 +36,8 @@ body {
     background-size: cover;
     background-attachment: fixed;
     scrollbar-width: none;
+    background-position-x: center;
+    background-position-y: 20%;
 }
 
 ::-webkit-scrollbar {
@@ -43,18 +45,7 @@ body {
     background: transparent; /* make scrollbar transparent */
 }
 
-@media (min-aspect-ratio: 4/3) {
-    body {
-        background-position-x: center;
-        background-position-y: 20%;
-    }
-}
-@media (max-aspect-ratio: 4/3) {
-    body {
-        background-position-x: center;
-        background-position-y: 0%;
-    }
-}
+$brand-width: 380px;
 
 #app {
     height: 100%;
@@ -77,13 +68,12 @@ body {
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
 
-        $width: 380px;
         $height: 180px;
         $corner-size: 25px;
-        $max-width-corner: $width - $corner-size;
+        $max-width-corner: $brand-width - $corner-size;
         $max-height-corner: $height - $corner-size;
 
-        width: $width;
+        width: $brand-width;
         height: $height;
         background-color: rgba(0, 0, 0, 0.7);
         padding: 0px 0px 0px 0px;
@@ -208,20 +198,28 @@ body {
     }
     #content {
         background-color: rgba(0, 0, 0, 0.7);
-        padding-bottom: 5px;
+        // padding-bottom: 5px;
         #projects {
-            a {
-                width: 200px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .project {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: $brand-width;
+                cursor: pointer;
                 margin: 5px 5px;
-                display: inline-block;
                 background-color: rgba(255, 255, 255, 0.15);
-                border: 1px solid rgba(0, 0, 0, 0.1);
-                padding: 6px 0px;
+                // border: 1px solid rgba(0, 0, 0, 0.1);
+                padding: 5px 5px;
+
                 h1 {
-                    font-size: 22px;
+                    font-size: 20px;
                 }
                 h2 {
-                    margin-top: 3px;
+                    margin-top: 0px;
                     font-size: 14px;
                 }
 
@@ -229,11 +227,13 @@ body {
                     background-color: rgba(0, 0, 0, 0.3);
 
                 }
-            }
-        }
-        #publications {
-            a {
-                display: block;
+                .description {
+                    text-align: justify;
+                    margin-top: 5px;
+                    padding: 0px 10px;
+                    font-size: 14px;
+
+                }
             }
         }
     }
