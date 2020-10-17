@@ -22,13 +22,13 @@ export class Project extends React.Component<IProjectProps, State> {
 
     public render(): JSX.Element {
         return (
-          <div className="project">
-            <a className="project-link" href={this.props.url}>
+          <a className="project" href={this.props.url}>
+            <div className="project-link">
                 <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-                <div className="description">{this.props.description}</div>
-            </a>
-          </div>
+                {this.props.subtitle.length > 0 ? <h2>{this.props.subtitle}</h2> : ""}
+                {this.props.description.length > 0 ? <div className="description">{this.props.description}</div> : ""}
+            </div>
+          </a>
         );
     }
 }
