@@ -33,6 +33,7 @@ export class Main extends React.Component<IMainProps, {}> {
                         <div id="right"></div>
                     </div>
                     <div id="content">
+                        <h2>Selection of Projects</h2>
                         <div id="projects">
                             <Project title="C++ SQL Parser" subtitle="" url="https://github.com/hyrise/sql-parser" description="Open-source C++ SQL Parser that I've built for a research database at my university. It can be integrated into any application. Click to visit the GitHub page of the project." />
                             <Project title="gdrive" subtitle=""  url="https://github.com/torpedro/gdrive-lib" description="Commandline tool and Python Library to query, upload, and download files into Google Drive and Google Sheet.  Click to visit the GitHub page of the project." />

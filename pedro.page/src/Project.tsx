@@ -20,15 +20,19 @@ export class Project extends React.Component<IProjectProps, State> {
         }
     }
 
+    toggleVisibility() {
+      this.setState({ active : !this.state.active })
+    }
+
     public render(): JSX.Element {
         return (
-          <a className="project" href={this.props.url}>
+          <div className="project">
             <div className="project-link">
-                <h1>{this.props.title}</h1>
+                <h1 onClick={() => this.toggleVisibility()}>{this.props.title}</h1>
                 {this.props.subtitle.length > 0 ? <h2>{this.props.subtitle}</h2> : ""}
-                {this.props.description.length > 0 ? <div className="description">{this.props.description}</div> : ""}
+                {this.props.description.length > 0 ? <div className={"description " + (this.state.active ? "active" : "inactive")}>{this.props.description}<br /><a href={this.props.url}>Click here to visit the project website</a></div> : ""}
             </div>
-          </a>
+          </div>
         );
     }
 }
