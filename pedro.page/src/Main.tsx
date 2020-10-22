@@ -6,6 +6,8 @@ export interface IMainProps {
 
 export class Main extends React.Component<IMainProps, {}> {
     active : Project | null = null
+    brand = React.createRef<HTMLDivElement>()
+    more = React.createRef<HTMLDivElement>()
 
     constructor(props: IMainProps) {
         super(props);
@@ -21,11 +23,46 @@ export class Main extends React.Component<IMainProps, {}> {
         }
     }
 
+    // onWindowScroll() {
+    //     if (this.brand.current && this.more.current) {
+    //         let scroll_y = window.pageYOffset;
+    //         let brand = this.brand.current;
+    //         let more = this.more.current;
+
+    //         window.outerHeight
+
+    //         let brand_bottom = brand.getBoundingClientRect().bottom;
+    //         let more_top = more.getBoundingClientRect().top;
+
+    //         // console.log()
+    //         // console.log(scroll_y)
+    //         let diff = more_top - brand_bottom;
+
+    //         let new_top = (more_top - (brand.offsetHeight / 2) - 50) + "px"
+    //         // console.log(new_top);
+    //         if (diff < 50) {
+    //             brand.style.top = new_top
+    //         }
+    //     }
+    // }
+
+    componentDidMount() {
+        console.log("mounted")
+
+        let self = this;
+        window.addEventListener("scroll", function() {
+            if (self.brand.current) {
+                let yPos = 0 - window.pageYOffset / 20;
+                self.brand.current.style.top = 45 + yPos + "%";
+            }
+        });
+    }
+
     public render(): JSX.Element {
         return (
             <div id="main">
                 <div id="brand">
-                    <div>
+                    <div ref={this.brand}>
                         <div id="name">
                             <h1>Pedro Flemming</h1>
                             <h2>Software Engineer in London, UK</h2>
@@ -37,7 +74,7 @@ export class Main extends React.Component<IMainProps, {}> {
                         </div>
                     </div>
                 </div>
-                <div id="more">
+                <div id="more" ref={this.more}>
                     <div id="drawer">
                         <div id="left"></div>
                         <div id="right"></div>
