@@ -52,7 +52,7 @@ export class Main extends React.Component<IMainProps, {}> {
         let self = this;
         window.addEventListener("scroll", function() {
             if (self.brand.current) {
-                let yPos = 0 - window.pageYOffset / 20;
+                let yPos = 0 - (100 * window.pageYOffset / window.outerHeight) / 2.5;
                 self.brand.current.style.top = 45 + yPos + "%";
             }
         });
