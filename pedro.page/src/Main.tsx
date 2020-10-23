@@ -47,8 +47,6 @@ export class Main extends React.Component<IMainProps, {}> {
     // }
 
     componentDidMount() {
-        console.log("mounted")
-
         let self = this;
         window.addEventListener("scroll", function() {
             if (self.brand.current) {

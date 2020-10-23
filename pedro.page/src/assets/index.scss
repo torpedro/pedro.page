@@ -34,23 +34,23 @@ h1, h2, h3, a, p {
 
 body {
     scrollbar-width: none;
-    background-position-x: center;
-    background-position-y: 20%;
 }
 
 body:after{
       content: "";
-      position: fixed; /* stretch a fixed position to the whole screen */
+      position: fixed;
       top: 0;
-      height: 100vh; /* fix for mobile browser address bar appearing disappearing */
+      height: 120vh;
       left: 0;
       right: 0;
-      z-index: -1; /* needed to keep in the background */
+      z-index: -1;
       background: url('images/city-of-london-1920.jpg') center center;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
+      background-position-x: center;
+      background-position-y: 20%;
 }
 
 ::-webkit-scrollbar {
@@ -58,7 +58,7 @@ body:after{
     background: transparent; /* make scrollbar transparent */
 }
 
-$brand-width: 380px;
+$brand-width: 360px;
 
 #app {
     height: 100%;
@@ -223,7 +223,6 @@ $brand-width: 380px;
         }
 
         #projects {
-            width: 400px;
             display: inline-flex;
             flex-wrap: wrap;
             justify-content: center;
