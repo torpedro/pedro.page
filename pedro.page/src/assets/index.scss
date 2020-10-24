@@ -265,14 +265,14 @@ $brand-width: 360px;
                         height: 0px;
                     }
                     &.active {
-                        height: 76px;
+                        height: 90px;
                     }
                     a {
                         display: block;
-                        margin-top: 3px;
+                        margin-top: 4px;
 
                         &:hover {
-                            color: $hover-text-color
+                            color: $hover-text-color;
                         }
                     }
                 }
