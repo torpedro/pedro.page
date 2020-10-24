@@ -223,6 +223,7 @@ $brand-width: 360px;
         }
 
         #projects {
+            max-width: 500px;
             display: inline-flex;
             flex-wrap: wrap;
             justify-content: center;
