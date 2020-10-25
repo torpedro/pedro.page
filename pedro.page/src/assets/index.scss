@@ -71,7 +71,7 @@ $brand-width-small: 360px;
 $brand-width-large: 400px;
 $brand-height-large: 180px;
 $brand-height-small: 170px;
-$brand-height-tiny: 160px;
+$brand-height-tiny: 150px;
 $corner-size: 25px;
 
 $more-width-large: $brand-width-large - (2 * $corner-size);
@@ -99,13 +99,16 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
 
     #vert-centered {
         position: relative;
-        // padding-top: 50px;
-        top: 25%;
         left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translateX(-50%) translateY(-50%);
 
-        -ms-transform: translate(-50%, -15%);
-        transform: translateX(-50%) translateY(-15%);
-        padding-bottom: 20px;;
+        @media (min-height: 600px) {
+            top: 45%;
+        }
+        @media (max-height: 600px) {
+            top: 50%;
+        }
     }
 
 }
@@ -117,10 +120,12 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
     #name {
         display: block;
         background-color: rgba(0, 0, 0, 0.0);
-        padding: 15px 5px 10px 5px;
+        padding: 15px 5px 20px 5px;
         border: rgba(0, 0, 0, 0.0) solid 1px;
 
         @media #{$large} {
+            padding-bottom: 20px;
+
             h1 {
                 font-size: 40px;
             }
@@ -128,7 +133,10 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
                 font-size: 20px;
             }
         }
+
         @media #{$small} {
+            padding-bottom: 15px;
+
             h1 {
                 font-size: 36px;
             }
@@ -137,6 +145,8 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
             }
         }
         @media #{$tiny} {
+            padding-bottom: 10px;
+
             h1 {
                 font-size: 32px;
             }

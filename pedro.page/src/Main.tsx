@@ -94,9 +94,9 @@ export class Main extends React.Component<IMainProps, IMainState> {
                                 <a className="icon github" href="https://github.com/torpedro"></a>
                                 <a className="icon instagram" href="https://www.instagram.com/thetorpedro/"></a>
                             </div>
-                            <div id="moreToggle" onClick={this.toggleMore.bind(this)}>{this.state.moreVisible ? "less" : "more"}</div>
+                            {/* <div id="moreToggle" onClick={this.toggleMore.bind(this)}>{this.state.moreVisible ? "less" : "more"}</div> */}
                         </div>
-                        <div id="more" className={(this.state.moreVisible ? "visible" : "hidden")} ref={this.more}>
+                        {/* <div id="more" className={(this.state.moreVisible ? "visible" : "hidden")} ref={this.more}>
                             <div id="content">
                                 <h2>Selection of Projects</h2>
                                 <div id="projects">
@@ -106,7 +106,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
                                     <Project onChange={this.onProjectChange.bind(this)} title="microtest.h" subtitle="" url="https://github.com/torpedro/microtest.h" description="Lightweight header-only testing framework for C++ to start build test-cases in our application with minimal overhead." />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
