@@ -27,6 +27,7 @@ a {
 }
 
 h1, h2, h3, a, p {
+    display: block;
     margin: 0px;
     padding: 0px;
     font-weight: inherit;
@@ -34,23 +35,23 @@ h1, h2, h3, a, p {
 
 body {
     scrollbar-width: none;
+    background: black;
 }
 
 body:after{
       content: "";
       position: fixed;
-      top: 0;
-      height: 120vh;
+      top: -20vh;
+      height: 130vh;
       left: 0;
       right: 0;
       z-index: -1;
-      background: url('images/city-of-london-1920.jpg') center center;
+      background: url('images/city-of-london-1920.jpg');
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
       background-position-x: center;
-      background-position-y: 20%;
 }
 
 ::-webkit-scrollbar {
@@ -58,7 +59,19 @@ body:after{
     background: transparent; /* make scrollbar transparent */
 }
 
-$brand-width: 360px;
+$large-w: 450px;
+$small-w: 390px;
+
+$tiny: "screen and (max-width: #{$small-w})";
+$small: "screen and (min-width: #{$small-w}) and (max-width: #{$large-w})";
+$large: "screen and (min-width: #{$large-w})";
+
+$brand-width-tiny: 300px;
+$brand-width-small: 360px;
+$brand-width-large: 400px;
+$brand-height-large: 180px;
+$brand-height-small: 170px;
+$brand-height-tiny: 160px;
 
 #app {
     height: 100%;
@@ -74,6 +87,7 @@ $brand-width: 360px;
     left: 0px;
     height: 100%;
     width: 100%;
+
     >div {
         position: fixed;
         top: 45%;
@@ -82,46 +96,111 @@ $brand-width: 360px;
         transform: translate(-50%, -50%);
         transition: top .05s;
 
-        $height: 180px;
-        $corner-size: 25px;
-        $max-width-corner: $brand-width - $corner-size;
-        $max-height-corner: $height - $corner-size;
-
-        width: $brand-width;
-        height: $height;
         background-color: rgba(0, 0, 0, 0.7);
         padding: 0px 0px 0px 0px;
 
-        clip-path: polygon(
-            0 $corner-size,
-            $corner-size 0,
-            $max-width-corner 0,
-            100% $corner-size,
-            100% $max-height-corner,
-            $max-width-corner 100%,
-            $corner-size 100%,
-            0% $max-height-corner,
-            0% $corner-size
-        )
+        #name {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.0);
+            padding: 15px 5px 10px 5px;
+            border: rgba(0, 0, 0, 0.0) solid 1px;
+
+            @media #{$large} {
+                h1 {
+                    font-size: 40px;
+                }
+                h2 {
+                    font-size: 20px;
+                }
+            }
+            @media #{$small} {
+                h1 {
+                    font-size: 36px;
+                }
+                h2 {
+                    font-size: 18px;
+                }
+            }
+            @media #{$tiny} {
+                h1 {
+                    font-size: 32px;
+                }
+                h2 {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        $corner-size: 25px;
+
+        @media #{$large} {
+            $brand-width: $brand-width-large;
+            $brand-height: $brand-height-large;
+
+            $max-width-corner: $brand-width - $corner-size;
+            $max-height-corner: $brand-height - $corner-size;
+
+            width: $brand-width;
+            height: $brand-height;
+
+            clip-path: polygon(
+                0 $corner-size,
+                $corner-size 0,
+                $max-width-corner 0,
+                100% $corner-size,
+                100% $max-height-corner,
+                $max-width-corner 100%,
+                $corner-size 100%,
+                0% $max-height-corner,
+                0% $corner-size
+            );
+        }
+        @media #{$small} {
+            $brand-width: $brand-width-small;
+            $brand-height: $brand-height-small;
+
+            $max-width-corner: $brand-width - $corner-size;
+            $max-height-corner: $brand-height - $corner-size;
+
+            width: $brand-width;
+            height: $brand-height;
+
+            clip-path: polygon(
+                0 $corner-size,
+                $corner-size 0,
+                $max-width-corner 0,
+                100% $corner-size,
+                100% $max-height-corner,
+                $max-width-corner 100%,
+                $corner-size 100%,
+                0% $max-height-corner,
+                0% $corner-size
+            );
+        }
+        @media screen and (max-width: $small-w){
+            $brand-width: $brand-width-tiny;
+            $brand-height: $brand-height-tiny;
+
+            $max-width-corner: $brand-width - $corner-size;
+            $max-height-corner: $brand-height - $corner-size;
+            width: $brand-width;
+            height: $brand-height;
+
+            clip-path: polygon(
+                0 $corner-size,
+                $corner-size 0,
+                $max-width-corner 0,
+                100% $corner-size,
+                100% $max-height-corner,
+                $max-width-corner 100%,
+                $corner-size 100%,
+                0% $max-height-corner,
+                0% $corner-size
+            );
+        }
     }
 }
 
-#name {
-    display: block;
-    background-color: rgba(0, 0, 0, 0.0);
-    padding: 15px 5px 20px 5px;
-    border: rgba(0, 0, 0, 0.0) solid 1px;
-
-    h1 {
-        display: block;
-        font-size: 40px;
-    }
-    h2 {
-        font-size: 20px;
-        // text-align: left;
-        // margin-left: 32px
-    }
-}
 
 #icons {
     text-align: center;
@@ -172,6 +251,7 @@ $brand-width: 360px;
 }
 
 #more {
+    min-width: $brand-width-tiny + 20px;
     $drawer-size: 15px;
     position: relative;
     top: -$drawer-size;
@@ -212,6 +292,7 @@ $brand-width: 360px;
         }
     }
     #content {
+        min-width: $brand-width-tiny + 20px;
         background-color: rgba(0, 0, 0, 0.7);
         min-height: 50vh;
         padding-bottom: 5px;
@@ -232,16 +313,34 @@ $brand-width: 360px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: $brand-width;
                 margin: 5px 5px;
                 background-color: rgba(255, 255, 255, 0.15);
                 // border: 1px solid rgba(0, 0, 0, 0.1);
+
+                @media #{$tiny} {
+                    width: $brand-width-tiny;
+                    h1 {
+                        width: $brand-width-tiny;
+                    }
+                }
+                @media #{$small} {
+                    width: $brand-width-small;
+                    h1 {
+                        width: $brand-width-small;
+                    }
+                }
+                @media #{$large} {
+                    width: $brand-width-large;
+                    h1 {
+                        width: $brand-width-large;
+                    }
+                }
+
 
                 h1 {
                     padding: 5px 0px;
                     font-size: 20px;
                     cursor: pointer;
-                    width: $brand-width;
                     display: block;
 
 
