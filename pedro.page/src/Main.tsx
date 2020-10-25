@@ -47,13 +47,15 @@ export class Main extends React.Component<IMainProps, {}> {
     // }
 
     componentDidMount() {
-        let self = this;
-        window.addEventListener("scroll", function() {
-            if (self.brand.current) {
-                let yPos = 0 - (100 * window.pageYOffset / window.outerHeight) / 2.5;
-                self.brand.current.style.top = 45 + yPos + "%";
-            }
-        });
+        // let self = this;
+        // function repositionBrand() {
+        //     if (self.brand.current) {
+        //         let yPos = 0 - (100 * window.pageYOffset / window.outerHeight) / 2.5;
+        //         self.brand.current.style.top = 45 + yPos + "%";
+        //     }
+        // }
+        // window.addEventListener("scroll", repositionBrand);
+        // window.addEventListener("resize", repositionBrand);
     }
 
     public render(): JSX.Element {

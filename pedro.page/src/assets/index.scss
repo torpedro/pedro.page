@@ -12,7 +12,7 @@ div#root {
     font-family: 'Raleway';
     color: $text-color;
     font-weight: 300;
-    height: 100vh;
+    height: 100%;
 }
 
 div, a {
@@ -76,8 +76,12 @@ $brand-height-tiny: 160px;
 #app {
     height: 100%;
     #main {
-        height: 100%;
+        height: 100vh;
         text-align: center;
+
+        // Parallex
+        perspective: 10px;
+        overflow-y: auto;
     }
 }
 
@@ -88,12 +92,14 @@ $brand-height-tiny: 160px;
     height: 100%;
     width: 100%;
 
+    // Parallex
+    transform: translateZ(-20px) scale(3);
     >div {
-        position: fixed;
+        position: absolute;
         top: 45%;
         left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+        // -ms-transform: translate(-50%, -50%);
+        transform: translateX(-50%) translateY(-50%);
         transition: top .05s;
 
         background-color: rgba(0, 0, 0, 0.7);
@@ -254,13 +260,18 @@ $brand-height-tiny: 160px;
     min-width: $brand-width-tiny + 20px;
     $drawer-size: 15px;
     position: relative;
-    top: -$drawer-size;
     width: 100%;
     text-align: center;
     padding: 0px 0px;
 
+    transform: translateZ(0px);
+
     #drawer {
+        position: absolute;
+        width: 100%;
+        top: -$drawer-size;
         height: $drawer-size;
+
         #left {
             background-color: rgba(0, 0, 0, 0.7);
             width: 50%;
