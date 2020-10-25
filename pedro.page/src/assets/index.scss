@@ -72,6 +72,11 @@ $brand-width-large: 400px;
 $brand-height-large: 180px;
 $brand-height-small: 170px;
 $brand-height-tiny: 160px;
+$corner-size: 25px;
+
+$more-width-large: $brand-width-large - (2 * $corner-size);
+$more-width-small: $brand-width-small - (2 * $corner-size);
+$more-width-tiny: $brand-width-tiny - (2 * $corner-size);
 
 #app {
     height: 100%;
@@ -80,130 +85,100 @@ $brand-height-tiny: 160px;
         text-align: center;
 
         // Parallex
-        perspective: 10px;
-        overflow-y: auto;
+        // perspective: 10px;
+        // overflow-y: auto;
     }
 }
 
-#brand {
+#vert-center-container {
     position: relative;
     top: 0px;
     left: 0px;
     height: 100%;
     width: 100%;
 
-    // Parallex
-    transform: translateZ(-20px) scale(3);
-    >div {
-        position: absolute;
-        top: 45%;
+    #vert-centered {
+        position: relative;
+        // padding-top: 50px;
+        top: 25%;
         left: 50%;
-        // -ms-transform: translate(-50%, -50%);
-        transform: translateX(-50%) translateY(-50%);
-        transition: top .05s;
 
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 0px 0px 0px 0px;
+        -ms-transform: translate(-50%, -15%);
+        transform: translateX(-50%) translateY(-15%);
+        padding-bottom: 20px;;
+    }
 
-        #name {
-            display: block;
-            background-color: rgba(0, 0, 0, 0.0);
-            padding: 15px 5px 10px 5px;
-            border: rgba(0, 0, 0, 0.0) solid 1px;
+}
 
-            @media #{$large} {
-                h1 {
-                    font-size: 40px;
-                }
-                h2 {
-                    font-size: 20px;
-                }
-            }
-            @media #{$small} {
-                h1 {
-                    font-size: 36px;
-                }
-                h2 {
-                    font-size: 18px;
-                }
-            }
-            @media #{$tiny} {
-                h1 {
-                    font-size: 32px;
-                }
-                h2 {
-                    font-size: 16px;
-                }
-            }
-        }
+#brand {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0px 0px 0px 0px;
 
-        $corner-size: 25px;
+    #name {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.0);
+        padding: 15px 5px 10px 5px;
+        border: rgba(0, 0, 0, 0.0) solid 1px;
 
         @media #{$large} {
-            $brand-width: $brand-width-large;
-            $brand-height: $brand-height-large;
-
-            $max-width-corner: $brand-width - $corner-size;
-            $max-height-corner: $brand-height - $corner-size;
-
-            width: $brand-width;
-            height: $brand-height;
-
-            clip-path: polygon(
-                0 $corner-size,
-                $corner-size 0,
-                $max-width-corner 0,
-                100% $corner-size,
-                100% $max-height-corner,
-                $max-width-corner 100%,
-                $corner-size 100%,
-                0% $max-height-corner,
-                0% $corner-size
-            );
+            h1 {
+                font-size: 40px;
+            }
+            h2 {
+                font-size: 20px;
+            }
         }
         @media #{$small} {
-            $brand-width: $brand-width-small;
-            $brand-height: $brand-height-small;
-
-            $max-width-corner: $brand-width - $corner-size;
-            $max-height-corner: $brand-height - $corner-size;
-
-            width: $brand-width;
-            height: $brand-height;
-
-            clip-path: polygon(
-                0 $corner-size,
-                $corner-size 0,
-                $max-width-corner 0,
-                100% $corner-size,
-                100% $max-height-corner,
-                $max-width-corner 100%,
-                $corner-size 100%,
-                0% $max-height-corner,
-                0% $corner-size
-            );
+            h1 {
+                font-size: 36px;
+            }
+            h2 {
+                font-size: 18px;
+            }
         }
-        @media screen and (max-width: $small-w){
-            $brand-width: $brand-width-tiny;
-            $brand-height: $brand-height-tiny;
-
-            $max-width-corner: $brand-width - $corner-size;
-            $max-height-corner: $brand-height - $corner-size;
-            width: $brand-width;
-            height: $brand-height;
-
-            clip-path: polygon(
-                0 $corner-size,
-                $corner-size 0,
-                $max-width-corner 0,
-                100% $corner-size,
-                100% $max-height-corner,
-                $max-width-corner 100%,
-                $corner-size 100%,
-                0% $max-height-corner,
-                0% $corner-size
-            );
+        @media #{$tiny} {
+            h1 {
+                font-size: 32px;
+            }
+            h2 {
+                font-size: 16px;
+            }
         }
+    }
+
+
+    clip-path: polygon(
+        0 $corner-size,
+        $corner-size 0,
+        calc(100% - #{$corner-size}) 0,
+        100% $corner-size,
+        100% calc(100% - #{$corner-size}),
+        calc(100% - #{$corner-size}) 100%,
+        $corner-size 100%,
+        0% calc(100% - #{$corner-size}),
+        0% $corner-size
+    );
+    @media #{$large} {
+        $brand-width: $brand-width-large;
+        $brand-height: $brand-height-large;
+
+        width: $brand-width;
+        height: $brand-height;
+
+    }
+    @media #{$small} {
+        $brand-width: $brand-width-small;
+        $brand-height: $brand-height-small;
+
+        width: $brand-width;
+        height: $brand-height;
+    }
+    @media screen and (max-width: $small-w){
+        $brand-width: $brand-width-tiny;
+        $brand-height: $brand-height-tiny;
+
+        width: $brand-width;
+        height: $brand-height;
     }
 }
 
@@ -250,67 +225,57 @@ $brand-height-tiny: 160px;
             height: 120px;
         }
 
-        &:hover { // Link-Hover
+        &:hover {
             opacity: 1.0;
         }
     }
 }
 
+#moreToggle {
+    cursor: pointer;
+    padding: 3px 0px;
+    font-size: 14px;
+}
+
 #more {
-    min-width: $brand-width-tiny + 20px;
-    $drawer-size: 15px;
-    position: relative;
-    width: 100%;
     text-align: center;
     padding: 0px 0px;
+    background-color: rgba(0, 0, 0, 0.7);
 
-    transform: translateZ(0px);
+    @media #{$large} {
+        width: $more-width-large;
+    }
+    @media #{$small} {
+        width: $more-width-small;
+    }
+    @media #{$tiny} {
+        width: $more-width-tiny;
+    }
+
+    transition: height .6s;
+
+    &.visible {
+        height: 0px;
+        position: relative;
+        top: 5px;
+        overflow-y: hidden;
+    }
+    &.hidden {
+        position: absolute;
+        top: -1000px;
+    }
+
+
 
     #drawer {
-        position: absolute;
         width: 100%;
-        top: -$drawer-size;
-        height: $drawer-size;
-
-        #left {
-            background-color: rgba(0, 0, 0, 0.7);
-            width: 50%;
-            height: $drawer-size;
-            display: inline-block;
-            position: relative;
-
-            clip-path: polygon(
-                0% 0%,
-                95% 0%,
-                100% 70%,
-                100% 100%,
-                0% 100%
-            );
-        }
-        #right {
-            background-color: rgba(0, 0, 0, 0.7);
-            width: 50%;
-            height: $drawer-size;
-            display: inline-block;
-
-            clip-path: polygon(
-                5% 0%,
-                100% 0%,
-                100% 100%,
-                0% 100%,
-                0% 70%
-            )
-        }
     }
     #content {
-        min-width: $brand-width-tiny + 20px;
-        background-color: rgba(0, 0, 0, 0.7);
-        min-height: 50vh;
         padding-bottom: 5px;
 
         h2 {
             font-size: 16px;
-            padding-top: 3px;
+            padding-top: 5px;
             padding-bottom: 5px;
         }
 
@@ -329,22 +294,13 @@ $brand-height-tiny: 160px;
                 // border: 1px solid rgba(0, 0, 0, 0.1);
 
                 @media #{$tiny} {
-                    width: $brand-width-tiny;
-                    h1 {
-                        width: $brand-width-tiny;
-                    }
+                    width: $more-width-tiny - 20px;
                 }
                 @media #{$small} {
-                    width: $brand-width-small;
-                    h1 {
-                        width: $brand-width-small;
-                    }
+                    width: $more-width-small - 20px;
                 }
                 @media #{$large} {
-                    width: $brand-width-large;
-                    h1 {
-                        width: $brand-width-large;
-                    }
+                    width: $more-width-large - 20px;
                 }
 
 
@@ -375,12 +331,15 @@ $brand-height-tiny: 160px;
                         height: 0px;
                     }
                     &.active {
-                        height: 96px;
                         @media #{$large} {
                             height: 78px;
-
                         }
-
+                        @media #{$small} {
+                            height: 78px;
+                        }
+                        @media #{$tiny} {
+                            height: 130px;
+                        }
                     }
                     a {
                         display: block;
