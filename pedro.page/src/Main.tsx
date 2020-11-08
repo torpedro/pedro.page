@@ -30,8 +30,11 @@ export class Main extends React.Component<IMainProps, IMainState> {
             y_scroll += ev.deltaY;
 
             if (self.content_scroll.current) {
-                if (y_scroll >= 200) {
-                    y_scroll = 200;
+                if (y_scroll >- 10) {
+                    self.content_scroll.current.style.left = "-50px";
+                }
+                if (y_scroll >= 100) {
+                    y_scroll = 100;
 
                     self.content_scroll.current.style.left = "-405px";
                 }
@@ -52,8 +55,11 @@ export class Main extends React.Component<IMainProps, IMainState> {
             touch_start_x = ev.touches[0].pageX;
 
             if (self.content_scroll.current) {
-                if (touch_diff_x >= 200) {
-                    touch_diff_x = 200;
+                if (touch_diff_x >= 10) {
+                    self.content_scroll.current.style.left = "-50px";
+                }
+                if (touch_diff_x >= 100) {
+                    touch_diff_x = 100;
 
                     self.content_scroll.current.style.left = "0px";
                 }
