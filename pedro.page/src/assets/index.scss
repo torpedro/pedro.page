@@ -148,8 +148,7 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
         position: relative;
         top: 0px;
         left: 0px;
-        transition: top .5s;
-        transition: left .5s;
+        transition: top .5s, left .5s;
 
         display: flex;
         flex-direction: row;
