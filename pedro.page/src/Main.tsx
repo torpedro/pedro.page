@@ -42,26 +42,33 @@ export class Main extends React.Component<IMainProps, IMainState> {
             }
         })
 
-        let touch_start_x = 0;
+        let touch_start_x = -1;
         let touch_diff_x = 0;
         window.addEventListener('touchstart', function(ev:TouchEvent) {
             touch_start_x = ev.touches[0].pageX;
         })
         window.addEventListener('touchmove', function(ev:TouchEvent) {
-            touch_diff_x += (ev.touches[0].pageX - touch_start_x);
+            if (touch_start_x == -1) touch_start_x = ev.touches[0].pageX
+            let diff = ev.touches[0].pageX - touch_start_x;
+            // positive diff -> swipe right
+            // negative diff -> swipe left
+            touch_diff_x += -diff;
             touch_start_x = ev.touches[0].pageX;
 
             if (self.content_scroll.current) {
-                if (touch_diff_x >= 100) {
-                    touch_diff_x = 100;
+                if (touch_diff_x <= 0) {
+                    touch_diff_x = 0;
 
                     self.content_scroll.current.style.left = "0px";
                 }
-                if (touch_diff_x <= 0) {
-                    touch_diff_x = 0;
+                if (touch_diff_x >= 100) {
+                    touch_diff_x = 100;
                     self.content_scroll.current.style.left = "-405px";
                 }
             }
+        })
+        window.addEventListener('touchend', function(ev:TouchEvent) {
+            touch_start_x = -1;
         })
 
     }
