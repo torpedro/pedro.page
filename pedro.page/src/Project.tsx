@@ -5,7 +5,6 @@ export interface IProjectProps {
   subtitle : string;
   url : string;
   description: string;
-  onChange : (project: Project, visible: boolean) => void
 }
 
 interface State {
@@ -24,18 +23,18 @@ export class Project extends React.Component<IProjectProps, State> {
     toggleVisibility() {
       let visible = !this.state.visible;
       this.setState({ visible })
-      this.props.onChange(this, visible)
+      // this.props.onChange(this, visible)
     }
 
     public render(): JSX.Element {
         return (
-          <div className="project">
-            <div className="project-link">
+          <a className="project" href={this.props.url}>
+            <div className="project-name">
                 <h1 onClick={() => this.toggleVisibility()}>{this.props.title}</h1>
                 {this.props.subtitle.length > 0 ? <h2>{this.props.subtitle}</h2> : ""}
-                {this.props.description.length > 0 ? <div className={"description " + (this.state.visible ? "active" : "inactive")}>{this.props.description}<br /><a href={this.props.url}>Click here to visit the project website</a></div> : ""}
+                {/* {this.props.description.length > 0 ? <div className={"description " + (this.state.visible ? "active" : "inactive")}>{this.props.description}<br /><a href={this.props.url}>Click here to visit the project website</a></div> : ""} */}
             </div>
-          </div>
+          </a>
         );
     }
 }

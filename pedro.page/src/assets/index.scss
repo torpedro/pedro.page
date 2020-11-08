@@ -28,8 +28,8 @@ a {
 
 h1, h2, h3, a, p {
     display: block;
-    margin: 0px;
-    padding: 0px;
+    margin: auto;
+    padding: auto;
     font-weight: inherit;
 }
 
@@ -66,27 +66,23 @@ $tiny: "screen and (max-width: #{$small-w})";
 $small: "screen and (min-width: #{$small-w}) and (max-width: #{$large-w})";
 $large: "screen and (min-width: #{$large-w})";
 
-$brand-width-tiny: 300px;
-$brand-width-small: 360px;
-$brand-width-large: 400px;
-$brand-height-large: 180px;
-$brand-height-small: 170px;
-$brand-height-tiny: 150px;
+$content-width-tiny: 300px;
+$content-width-small: 360px;
+$content-width-large: 400px;
+$content-height-large: 180px;
+$content-height-small: 170px;
+$content-height-tiny: 150px;
 $corner-size: 25px;
 
-$more-width-large: $brand-width-large - (2 * $corner-size);
-$more-width-small: $brand-width-small - (2 * $corner-size);
-$more-width-tiny: $brand-width-tiny - (2 * $corner-size);
+$more-width-large: $content-width-large - (2 * $corner-size);
+$more-width-small: $content-width-small - (2 * $corner-size);
+$more-width-tiny: $content-width-tiny - (2 * $corner-size);
 
 #app {
     height: 100%;
     #main {
         height: 100vh;
         text-align: center;
-
-        // Parallex
-        // perspective: 10px;
-        // overflow-y: auto;
     }
 }
 
@@ -110,13 +106,150 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
             top: 50%;
         }
     }
-
 }
 
-#brand {
+.corners {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 0px 0px 0px 0px;
 
+    clip-path: polygon(
+        0 $corner-size,
+        $corner-size 0,
+        calc(100% - #{$corner-size}) 0,
+        100% $corner-size,
+        100% calc(100% - #{$corner-size}),
+        calc(100% - #{$corner-size}) 100%,
+        $corner-size 100%,
+        0% calc(100% - #{$corner-size}),
+        0% $corner-size
+    );
+}
+
+#content {
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    @media #{$large} {
+        width: $content-width-large;
+        height: $content-height-large;
+    }
+    @media #{$small} {
+        width: $content-width-small;
+        height: $content-height-small;
+    }
+    @media screen and (max-width: $small-w){
+        width: $content-width-tiny;
+        height: $content-height-tiny;
+    }
+
+    > div {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0px;
+        transition: top .5s;
+
+        > div {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#projects {
+
+    @media #{$large} {
+        $margin: 180px - $content-height-large + 5px;
+
+        width: $content-width-large;
+        height: $content-height-large;
+        margin-top: $margin;
+
+        .project {
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+        }
+    }
+    @media #{$small} {
+        $margin: 180px - $content-height-small + 5px ;
+
+        width: $content-width-small;
+        height: $content-height-small;
+        margin-top: $margin;
+
+        .project {
+            h1 {
+                font-size: 18px;
+            }
+            h2 {
+                font-size: 14px;
+            }
+        }
+    }
+    @media screen and (max-width: $small-w){
+        $margin: 180px - $content-height-tiny + 5px;
+
+        width: $content-width-tiny;
+        height: $content-height-tiny;
+        margin-top: $margin;
+
+        .project {
+            h1 {
+                font-size: 16px;
+            }
+            h2 {
+                font-size: 12px;
+            }
+        }
+    }
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .project-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: space-around;
+
+        width: 90%;
+        height: calc(100% - 30px);
+
+
+        .project {
+            display: flex;
+            align-items: center;
+
+            width: 47%;
+            height: 40%;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+
+            h1 {
+                margin-top: -2px;
+            }
+            h2 {
+                margin-top: 5px;
+            }
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .inactive {
+                display: none;
+            }
+        }
+    }
+}
+
+#brand {
     #name {
         display: block;
         background-color: rgba(0, 0, 0, 0.0);
@@ -156,42 +289,7 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
         }
     }
 
-
-    clip-path: polygon(
-        0 $corner-size,
-        $corner-size 0,
-        calc(100% - #{$corner-size}) 0,
-        100% $corner-size,
-        100% calc(100% - #{$corner-size}),
-        calc(100% - #{$corner-size}) 100%,
-        $corner-size 100%,
-        0% calc(100% - #{$corner-size}),
-        0% $corner-size
-    );
-    @media #{$large} {
-        $brand-width: $brand-width-large;
-        $brand-height: $brand-height-large;
-
-        width: $brand-width;
-        height: $brand-height;
-
-    }
-    @media #{$small} {
-        $brand-width: $brand-width-small;
-        $brand-height: $brand-height-small;
-
-        width: $brand-width;
-        height: $brand-height;
-    }
-    @media screen and (max-width: $small-w){
-        $brand-width: $brand-width-tiny;
-        $brand-height: $brand-height-tiny;
-
-        width: $brand-width;
-        height: $brand-height;
-    }
 }
-
 
 #icons {
     text-align: center;
@@ -245,122 +343,4 @@ $more-width-tiny: $brand-width-tiny - (2 * $corner-size);
     cursor: pointer;
     padding: 3px 0px;
     font-size: 14px;
-}
-
-#more {
-    text-align: center;
-    padding: 0px 0px;
-    background-color: rgba(0, 0, 0, 0.7);
-
-    @media #{$large} {
-        width: $more-width-large;
-    }
-    @media #{$small} {
-        width: $more-width-small;
-    }
-    @media #{$tiny} {
-        width: $more-width-tiny;
-    }
-
-    transition: height .6s;
-
-    &.visible {
-        height: 0px;
-        position: relative;
-        top: 5px;
-        overflow-y: hidden;
-    }
-    &.hidden {
-        position: absolute;
-        top: -1000px;
-    }
-
-
-
-    #drawer {
-        width: 100%;
-    }
-    #content {
-        padding-bottom: 5px;
-
-        h2 {
-            font-size: 16px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        #projects {
-            max-width: 500px;
-            display: inline-flex;
-            flex-wrap: wrap;
-            justify-content: center;
-
-            .project {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 5px 5px;
-                background-color: rgba(255, 255, 255, 0.15);
-                // border: 1px solid rgba(0, 0, 0, 0.1);
-
-                @media #{$tiny} {
-                    width: $more-width-tiny - 20px;
-                }
-                @media #{$small} {
-                    width: $more-width-small - 20px;
-                }
-                @media #{$large} {
-                    width: $more-width-large - 20px;
-                }
-
-
-                h1 {
-                    padding: 5px 0px;
-                    font-size: 20px;
-                    cursor: pointer;
-                    display: block;
-
-
-                    &:hover {
-                        color: $hover-text-color;
-                    }
-                }
-                h2 {
-                    margin-top: 0px;
-                    font-size: 14px;
-                }
-                .description {
-                    text-align: justify;
-                    padding: 0px 10px 0px 10px;
-                    font-size: 14px;
-
-                    transition: height 0.2s;
-                    overflow: hidden;
-
-                    &.inactive {
-                        height: 0px;
-                    }
-                    &.active {
-                        @media #{$large} {
-                            height: 78px;
-                        }
-                        @media #{$small} {
-                            height: 78px;
-                        }
-                        @media #{$tiny} {
-                            height: 130px;
-                        }
-                    }
-                    a {
-                        display: block;
-                        margin-top: 4px;
-
-                        &:hover {
-                            color: $hover-text-color;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
