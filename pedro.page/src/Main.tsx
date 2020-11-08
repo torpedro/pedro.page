@@ -33,33 +33,33 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 if (y_scroll >= 200) {
                     y_scroll = 200;
 
-                    self.content_scroll.current.style.top = "-185px";
+                    self.content_scroll.current.style.left = "-405px";
                 }
                 if (y_scroll <= 0) {
                     y_scroll = 0;
-                    self.content_scroll.current.style.top = "0px";
+                    self.content_scroll.current.style.left = "0px";
                 }
             }
         })
 
-        let touch_start_y = 0;
-        let touch_diff_y = 0;
+        let touch_start_x = 0;
+        let touch_diff_x = 0;
         window.addEventListener('touchstart', function(ev:TouchEvent) {
-            touch_start_y = ev.touches[0].pageY;
+            touch_start_x = ev.touches[0].pageX;
         })
         window.addEventListener('touchmove', function(ev:TouchEvent) {
-            touch_diff_y += (ev.touches[0].pageY - touch_start_y);
-            touch_start_y = ev.touches[0].pageY;
+            touch_diff_x += (ev.touches[0].pageX - touch_start_x);
+            touch_start_x = ev.touches[0].pageX;
 
             if (self.content_scroll.current) {
-                if (touch_diff_y >= 200) {
-                    touch_diff_y = 200;
+                if (touch_diff_x >= 200) {
+                    touch_diff_x = 200;
 
-                    self.content_scroll.current.style.top = "0px";
+                    self.content_scroll.current.style.left = "0px";
                 }
-                if (touch_diff_y <= 0) {
-                    touch_diff_y = 0;
-                    self.content_scroll.current.style.top = "-185px";
+                if (touch_diff_x <= 0) {
+                    touch_diff_x = 0;
+                    self.content_scroll.current.style.left = "-405px";
                 }
             }
         })

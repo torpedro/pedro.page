@@ -143,27 +143,33 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
     }
 
     > div {
-        width: 100%;
+        width: 200%;
         height: 100%;
         position: relative;
         top: 0px;
+        left: 0px;
         transition: top .5s;
+        transition: left .5s;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
         > div {
-            width: 100%;
+            width: 49%;
             height: 100%;
         }
     }
 }
 
 #projects {
-
+    position: relative;
     @media #{$large} {
-        $margin: 180px - $content-height-large + 5px;
+        $margin: 400px - $content-width-large + 5px;
 
         width: $content-width-large;
         height: $content-height-large;
-        margin-top: $margin;
+        left: $margin;
 
         .project {
             h1 {
@@ -175,11 +181,11 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
         }
     }
     @media #{$small} {
-        $margin: 180px - $content-height-small + 5px ;
+        $margin: 400px - $content-width-small + 5px ;
 
         width: $content-width-small;
         height: $content-height-small;
-        margin-top: $margin;
+        left: $margin;
 
         .project {
             h1 {
@@ -191,11 +197,11 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
         }
     }
     @media screen and (max-width: $small-w){
-        $margin: 180px - $content-height-tiny + 5px;
+        $margin: 400px - $content-width-tiny + 5px;
 
         width: $content-width-tiny;
         height: $content-height-tiny;
-        margin-top: $margin;
+        left: $margin;
 
         .project {
             h1 {
