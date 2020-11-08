@@ -31,7 +31,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
 
             if (self.content_scroll.current) {
                 if (y_scroll >= 200) {
-                    y_scroll = 100;
+                    y_scroll = 200;
 
                     self.content_scroll.current.style.top = "-185px";
                 }
@@ -41,6 +41,29 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 }
             }
         })
+
+        let touch_start_y = 0;
+        let touch_diff_y = 0;
+        window.addEventListener('touchstart', function(ev:TouchEvent) {
+            touch_start_y = ev.touches[0].pageY;
+        })
+        window.addEventListener('touchmove', function(ev:TouchEvent) {
+            touch_diff_y += (ev.touches[0].pageY - touch_start_y);
+            touch_start_y = ev.touches[0].pageY;
+
+            if (self.content_scroll.current) {
+                if (touch_diff_y >= 200) {
+                    touch_diff_y = 200;
+
+                    self.content_scroll.current.style.top = "0px";
+                }
+                if (touch_diff_y <= 0) {
+                    touch_diff_y = 0;
+                    self.content_scroll.current.style.top = "-185px";
+                }
+            }
+        })
+
     }
 
     public render(): JSX.Element {
