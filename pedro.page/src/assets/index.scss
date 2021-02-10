@@ -157,7 +157,7 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
     top: 0px;
     transform: translateZ(-1px) rotateY(180deg);
     transition: 1s;
-    opacity: .6;
+    opacity: 1;
 
     @media #{$large} {
         $margin: 400px - $content-width-large + 5px;

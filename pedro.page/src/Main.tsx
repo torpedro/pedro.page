@@ -24,26 +24,37 @@ export class Main extends React.Component<IMainProps, IMainState> {
           }
     }
 
+    flipFront() {
+        if (this.rotate_div.current && this.more.current && this.brand.current) {
+            this.rotate_div.current.style.transform = "rotateY(210deg)";
+            this.more.current.style.opacity = "1";
+            this.brand.current.style.opacity = ".3";
+        }
+    }
+
+    flipBack() {
+        if (this.rotate_div.current && this.more.current && this.brand.current) {
+            this.rotate_div.current.style.transform = "rotateY(30deg)";
+            this.more.current.style.opacity = "1";
+            this.brand.current.style.opacity = "1";
+        }
+    }
+
     componentDidMount() {
         let self = this;
         let y_scroll = 0;
         window.addEventListener('wheel', function (ev : WheelEvent) {
             y_scroll += ev.deltaY;
 
-            if (self.rotate_div.current && self.more.current && self.brand.current) {
-                if (y_scroll >= 100) {
-                    y_scroll = 100;
+            if (y_scroll >= 100) {
+                y_scroll = 100;
 
-                    self.rotate_div.current.style.transform = "rotateY(210deg)";
-                    self.more.current.style.opacity = "1";
-                    self.brand.current.style.opacity = ".3";
-                }
-                if (y_scroll <= 0) {
-                    y_scroll = 0;
-                    self.rotate_div.current.style.transform = "rotateY(30deg)";
-                    self.more.current.style.opacity = ".6";
-                    self.brand.current.style.opacity = "1";
-                }
+                self.flipFront()
+            }
+            if (y_scroll <= 0) {
+                y_scroll = 0;
+
+                self.flipBack()
             }
         })
 
@@ -60,21 +71,15 @@ export class Main extends React.Component<IMainProps, IMainState> {
             touch_diff_x += -diff;
             touch_start_x = ev.touches[0].pageX;
 
-            if (self.rotate_div.current && self.more.current && self.brand.current) {
-                if (touch_diff_x <= 0) {
-                    touch_diff_x = 0;
+            if (touch_diff_x <= 0) {
+                touch_diff_x = 0;
 
+                self.flipFront()
+            }
+            if (touch_diff_x >= 100) {
+                touch_diff_x = 100;
 
-                    self.rotate_div.current.style.transform = "rotateY(210deg)";
-                    self.more.current.style.opacity = "1";
-                    self.brand.current.style.opacity = ".3";
-                }
-                if (touch_diff_x >= 100) {
-                    touch_diff_x = 100;
-                    self.rotate_div.current.style.transform = "rotateY(30deg)";
-                    self.more.current.style.opacity = ".6";
-                    self.brand.current.style.opacity = "1";
-                }
+                self.flipBack()
             }
         });
         window.addEventListener('touchend', function(ev:TouchEvent) {
