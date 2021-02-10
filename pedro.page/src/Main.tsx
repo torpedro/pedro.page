@@ -11,8 +11,9 @@ interface IMainState {
 export class Main extends React.Component<IMainProps, IMainState> {
     active : Project | null = null
     brand = React.createRef<HTMLDivElement>()
+    more = React.createRef<HTMLDivElement>()
     content = React.createRef<HTMLDivElement>()
-    content_scroll = React.createRef<HTMLDivElement>()
+    rotate_div = React.createRef<HTMLDivElement>()
 
     constructor(props: IMainProps) {
         super(props);
@@ -29,15 +30,19 @@ export class Main extends React.Component<IMainProps, IMainState> {
         window.addEventListener('wheel', function (ev : WheelEvent) {
             y_scroll += ev.deltaY;
 
-            if (self.content_scroll.current) {
+            if (self.rotate_div.current && self.more.current && self.brand.current) {
                 if (y_scroll >= 100) {
                     y_scroll = 100;
 
-                    self.content_scroll.current.style.left = "-405px";
+                    self.rotate_div.current.style.transform = "rotateY(200deg)";
+                    self.more.current.style.opacity = "1";
+                    self.brand.current.style.opacity = ".3";
                 }
                 if (y_scroll <= 0) {
                     y_scroll = 0;
-                    self.content_scroll.current.style.left = "0px";
+                    self.rotate_div.current.style.transform = "rotateY(20deg)";
+                    self.more.current.style.opacity = ".6";
+                    self.brand.current.style.opacity = "1";
                 }
             }
         })
@@ -46,7 +51,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
         let touch_diff_x = 0;
         window.addEventListener('touchstart', function(ev:TouchEvent) {
             touch_start_x = ev.touches[0].pageX;
-        })
+        });
         window.addEventListener('touchmove', function(ev:TouchEvent) {
             if (touch_start_x == -1) touch_start_x = ev.touches[0].pageX
             let diff = ev.touches[0].pageX - touch_start_x;
@@ -55,22 +60,21 @@ export class Main extends React.Component<IMainProps, IMainState> {
             touch_diff_x += -diff;
             touch_start_x = ev.touches[0].pageX;
 
-            if (self.content_scroll.current) {
+            if (self.rotate_div.current) {
                 if (touch_diff_x <= 0) {
                     touch_diff_x = 0;
 
-                    self.content_scroll.current.style.left = "0px";
+                    self.rotate_div.current.style.transform = "rotateY(20deg)";
                 }
                 if (touch_diff_x >= 100) {
                     touch_diff_x = 100;
-                    self.content_scroll.current.style.left = "-405px";
+                    self.rotate_div.current.style.transform = "rotateY(200deg)";
                 }
             }
-        })
+        });
         window.addEventListener('touchend', function(ev:TouchEvent) {
             touch_start_x = -1;
-        })
-
+        });
     }
 
     public render(): JSX.Element {
@@ -79,7 +83,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 <div id="vert-center-container">
                     <div id="vert-centered">
                         <div ref={this.content} id="content">
-                            <div ref={this.content_scroll}>
+                            <div ref={this.rotate_div}>
                                 <div ref={this.brand} id="brand" className="corners">
                                     <div id="name">
                                         <h1>Pedro Flemming</h1>
@@ -90,9 +94,8 @@ export class Main extends React.Component<IMainProps, IMainState> {
                                         <a className="icon github" href="https://github.com/torpedro"></a>
                                         <a className="icon instagram" href="https://www.instagram.com/thetorpedro/"></a>
                                     </div>
-                                    {/* <div id="moreToggle" onClick={this.toggleMore.bind(this)}>{this.state.moreVisible ? "less" : "more"}</div> */}
                                 </div>
-                                <div id="projects" className="corners">
+                                <div ref={this.more} id="more" className="corners">
                                     <div className="project-list">
                                         <Project title="C++ SQL Parser" subtitle="C++ Library" url="https://github.com/hyrise/sql-parser" description="Open-source C++ SQL Parser that I've built for a research database at my university. It can be integrated into any application." />
                                         <Project title="gdrive" subtitle="Python Tool &amp; Library"  url="https://github.com/torpedro/gdrive-lib" description="Commandline tool and Python Library to query, upload, and download files into Google Drive and Google Sheet." />
