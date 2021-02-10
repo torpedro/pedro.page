@@ -34,13 +34,13 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 if (y_scroll >= 100) {
                     y_scroll = 100;
 
-                    self.rotate_div.current.style.transform = "rotateY(200deg)";
+                    self.rotate_div.current.style.transform = "rotateY(210deg)";
                     self.more.current.style.opacity = "1";
                     self.brand.current.style.opacity = ".3";
                 }
                 if (y_scroll <= 0) {
                     y_scroll = 0;
-                    self.rotate_div.current.style.transform = "rotateY(20deg)";
+                    self.rotate_div.current.style.transform = "rotateY(30deg)";
                     self.more.current.style.opacity = ".6";
                     self.brand.current.style.opacity = "1";
                 }
@@ -64,15 +64,16 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 if (touch_diff_x <= 0) {
                     touch_diff_x = 0;
 
-                    self.rotate_div.current.style.transform = "rotateY(20deg)";
-                    self.more.current.style.opacity = ".6";
-                    self.brand.current.style.opacity = "1";
+
+                    self.rotate_div.current.style.transform = "rotateY(210deg)";
+                    self.more.current.style.opacity = "1";
+                    self.brand.current.style.opacity = ".3";
                 }
                 if (touch_diff_x >= 100) {
                     touch_diff_x = 100;
-                    self.rotate_div.current.style.transform = "rotateY(200deg)";
-                    self.more.current.style.opacity = "1";
-                    self.brand.current.style.opacity = ".3";
+                    self.rotate_div.current.style.transform = "rotateY(30deg)";
+                    self.more.current.style.opacity = ".6";
+                    self.brand.current.style.opacity = "1";
                 }
             }
         });
