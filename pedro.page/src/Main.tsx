@@ -60,15 +60,19 @@ export class Main extends React.Component<IMainProps, IMainState> {
             touch_diff_x += -diff;
             touch_start_x = ev.touches[0].pageX;
 
-            if (self.rotate_div.current) {
+            if (self.rotate_div.current && self.more.current && self.brand.current) {
                 if (touch_diff_x <= 0) {
                     touch_diff_x = 0;
 
                     self.rotate_div.current.style.transform = "rotateY(20deg)";
+                    self.more.current.style.opacity = ".6";
+                    self.brand.current.style.opacity = "1";
                 }
                 if (touch_diff_x >= 100) {
                     touch_diff_x = 100;
                     self.rotate_div.current.style.transform = "rotateY(200deg)";
+                    self.more.current.style.opacity = "1";
+                    self.brand.current.style.opacity = ".3";
                 }
             }
         });
