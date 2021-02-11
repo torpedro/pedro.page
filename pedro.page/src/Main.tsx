@@ -44,7 +44,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
         }
     }
 
-    flipLeft() {
+    flipLeft(timeout: number) {
         let self = this;
         if (this.in_rotation) return;
 
@@ -55,12 +55,12 @@ export class Main extends React.Component<IMainProps, IMainState> {
 
         window.setTimeout(function () {
             self.y_scroll = -100;
-            self.touch_diff_x = 0;
+            self.touch_diff_x = 50;
             self.in_rotation = false;
-        }, 1250)
+        }, timeout)
     }
 
-    flipRight() {
+    flipRight(timeout: number) {
         let self = this;
         if (this.in_rotation) return;
 
@@ -71,9 +71,9 @@ export class Main extends React.Component<IMainProps, IMainState> {
 
         window.setTimeout(function () {
             self.y_scroll = 100;
-            self.touch_diff_x = 0;
+            self.touch_diff_x = -50;
             self.in_rotation = false;
-        }, 1250)
+        }, timeout)
     }
 
     componentDidMount() {
@@ -82,11 +82,11 @@ export class Main extends React.Component<IMainProps, IMainState> {
             self.y_scroll += ev.deltaY;
 
             if (self.y_scroll >= 200) {
-                self.flipLeft()
+                self.flipLeft(1250)
 
             }
             if (self.y_scroll <= -200) {
-                self.flipRight()
+                self.flipRight(1250)
             }
         })
 
@@ -98,18 +98,17 @@ export class Main extends React.Component<IMainProps, IMainState> {
             if (touch_start_x == -1) touch_start_x = ev.touches[0].pageX
             let diff = ev.touches[0].pageX - touch_start_x;
 
-            if (Math.abs(diff) > 20)
-
             // positive diff -> swipe right
             // negative diff -> swipe left
             self.touch_diff_x += -diff;
             touch_start_x = ev.touches[0].pageX;
 
-            if (self.touch_diff_x <= -100) {
-                self.flipLeft()
+            console.log(self.touch_diff_x)
+            if (self.touch_diff_x <= -150) {
+                self.flipLeft(750)
             }
-            if (self.touch_diff_x >= 100) {
-                self.flipRight()
+            if (self.touch_diff_x >= 150) {
+                self.flipRight(750)
             }
         });
         window.addEventListener('touchend', function(ev:TouchEvent) {
