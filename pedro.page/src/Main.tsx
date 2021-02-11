@@ -6,6 +6,7 @@ export interface IMainProps {
 
 interface IMainState {
     moreVisible : boolean;
+    rotation: number;
 }
 
 export class Main extends React.Component<IMainProps, IMainState> {
@@ -14,72 +15,101 @@ export class Main extends React.Component<IMainProps, IMainState> {
     more = React.createRef<HTMLDivElement>()
     content = React.createRef<HTMLDivElement>()
     rotate_div = React.createRef<HTMLDivElement>()
+    in_rotation = false
+    y_scroll = 0
+    touch_diff_x = 0
 
     constructor(props: IMainProps) {
         super(props);
 
 
+
         this.state = {
-            moreVisible: false
-          }
-    }
-
-    flipFront() {
-        if (this.rotate_div.current && this.more.current && this.brand.current) {
-            this.rotate_div.current.style.transform = "rotateY(210deg)";
-            this.more.current.style.opacity = "1";
-            this.brand.current.style.opacity = ".3";
+            moreVisible: false,
+            rotation: 30,
         }
     }
 
-    flipBack() {
-        if (this.rotate_div.current && this.more.current && this.brand.current) {
-            this.rotate_div.current.style.transform = "rotateY(30deg)";
-            this.more.current.style.opacity = "1";
-            this.brand.current.style.opacity = "1";
+    updateVisible() {
+        if (this.more.current && this.brand.current) {
+            if (((this.state.rotation - 30) / 180) % 2 == 0) {
+                // Front is visible
+                this.more.current.style.opacity = "1";
+                this.brand.current.style.opacity = "1";
+            } else {
+                // Back is visible
+                this.more.current.style.opacity = "1";
+                this.brand.current.style.opacity = ".3";
+            }
         }
+    }
+
+    flipLeft() {
+        let self = this;
+        if (this.in_rotation) return;
+
+        this.in_rotation = true;
+
+        this.setState({ rotation: this.state.rotation + 180 })
+        this.updateVisible();
+
+        window.setTimeout(function () {
+            self.y_scroll = -100;
+            self.touch_diff_x = 0;
+            self.in_rotation = false;
+        }, 1250)
+    }
+
+    flipRight() {
+        let self = this;
+        if (this.in_rotation) return;
+
+        this.in_rotation = true;
+
+        this.setState({ rotation: this.state.rotation - 180 })
+        this.updateVisible();
+
+        window.setTimeout(function () {
+            self.y_scroll = 100;
+            self.touch_diff_x = 0;
+            self.in_rotation = false;
+        }, 1250)
     }
 
     componentDidMount() {
         let self = this;
-        let y_scroll = 0;
         window.addEventListener('wheel', function (ev : WheelEvent) {
-            y_scroll += ev.deltaY;
+            self.y_scroll += ev.deltaY;
 
-            if (y_scroll >= 100) {
-                y_scroll = 100;
+            if (self.y_scroll >= 200) {
+                self.flipLeft()
 
-                self.flipFront()
             }
-            if (y_scroll <= 0) {
-                y_scroll = 0;
-
-                self.flipBack()
+            if (self.y_scroll <= -200) {
+                self.flipRight()
             }
         })
 
         let touch_start_x = -1;
-        let touch_diff_x = 0;
         window.addEventListener('touchstart', function(ev:TouchEvent) {
             touch_start_x = ev.touches[0].pageX;
         });
         window.addEventListener('touchmove', function(ev:TouchEvent) {
             if (touch_start_x == -1) touch_start_x = ev.touches[0].pageX
             let diff = ev.touches[0].pageX - touch_start_x;
+
+            if (Math.abs(diff) > 20)
+
             // positive diff -> swipe right
             // negative diff -> swipe left
-            touch_diff_x += -diff;
+            self.touch_diff_x += -diff;
             touch_start_x = ev.touches[0].pageX;
 
-            if (touch_diff_x <= 0) {
-                touch_diff_x = 0;
-
-                self.flipFront()
+            if (self.touch_diff_x <= -100) {
+                self.flipLeft()
             }
-            if (touch_diff_x >= 100) {
-                touch_diff_x = 100;
-
-                self.flipBack()
+            if (self.touch_diff_x >= 100) {
+                self.flipRight()
             }
         });
         window.addEventListener('touchend', function(ev:TouchEvent) {
@@ -93,7 +123,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 <div id="vert-center-container">
                     <div id="vert-centered">
                         <div ref={this.content} id="content">
-                            <div ref={this.rotate_div}>
+                            <div ref={this.rotate_div} style={ { transform: "rotateY(" + this.state.rotation + "deg)" } }>
                                 <div ref={this.brand} id="brand" className="corners">
                                     <div id="name">
                                         <h1>Pedro Flemming</h1>

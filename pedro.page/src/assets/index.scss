@@ -160,12 +160,6 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
     opacity: 1;
 
     @media #{$large} {
-        $margin: 400px - $content-width-large + 5px;
-
-        width: $content-width-large;
-        height: $content-height-large;
-        left: $margin;
-
         .project {
             h1 {
                 font-size: 20px;
@@ -176,12 +170,6 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
         }
     }
     @media #{$small} {
-        $margin: 400px - $content-width-small + 5px ;
-
-        width: $content-width-small;
-        height: $content-height-small;
-        left: $margin;
-
         .project {
             h1 {
                 font-size: 18px;
@@ -192,12 +180,6 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
         }
     }
     @media screen and (max-width: $small-w){
-        $margin: 400px - $content-width-tiny + 5px;
-
-        width: $content-width-tiny;
-        height: $content-height-tiny;
-        left: $margin;
-
         .project {
             h1 {
                 font-size: 16px;
