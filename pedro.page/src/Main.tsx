@@ -26,13 +26,13 @@ export class Main extends React.Component<IMainProps, IMainState> {
 
         this.state = {
             moreVisible: false,
-            rotation: 30,
+            rotation: 0,
         }
     }
 
     updateVisible() {
         if (this.more.current && this.brand.current) {
-            if (((this.state.rotation - 30) / 180) % 2 == 0) {
+            if (((this.state.rotation - 0) / 180) % 2 == 0) {
                 // Front is visible
                 this.more.current.style.opacity = "1";
                 this.brand.current.style.opacity = "1";
