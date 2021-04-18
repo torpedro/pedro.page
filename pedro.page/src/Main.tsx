@@ -34,12 +34,12 @@ export class Main extends React.Component<IMainProps, IMainState> {
         if (this.more.current && this.brand.current) {
             if (((this.state.rotation - 0) / 180) % 2 == 0) {
                 // Front is visible
-                this.more.current.style.opacity = "1";
-                this.brand.current.style.opacity = "1";
+                // this.more.current.style.opacity = "1";
+                // this.brand.current.style.opacity = "1";
             } else {
                 // Back is visible
-                this.more.current.style.opacity = "1";
-                this.brand.current.style.opacity = ".3";
+                // this.more.current.style.opacity = "1";
+                // this.brand.current.style.opacity = ".3";
             }
         }
     }
@@ -132,14 +132,6 @@ export class Main extends React.Component<IMainProps, IMainState> {
                                         <a className="icon linkedin" href="https://www.linkedin.com/in/pedroflemming"></a>
                                         <a className="icon github" href="https://github.com/torpedro"></a>
                                         <a className="icon instagram" href="https://www.instagram.com/thetorpedro/"></a>
-                                    </div>
-                                </div>
-                                <div ref={this.more} id="more" className="corners">
-                                    <div className="project-list">
-                                        <Project title="C++ SQL Parser" subtitle="C++ Library" url="https://github.com/hyrise/sql-parser" description="Open-source C++ SQL Parser that I've built for a research database at my university. It can be integrated into any application." />
-                                        <Project title="gdrive" subtitle="Python Tool &amp; Library"  url="https://github.com/torpedro/gdrive-lib" description="Commandline tool and Python Library to query, upload, and download files into Google Drive and Google Sheet." />
-                                        <Project title="POS Explorer" subtitle="ERP Application" url="https://hpi.de/plattner/projects/project-archive/pos-explorer.html" description="Final project at my university. We built a tool to analise point-of-sales data in real-time for large scale retail businesses." />
-                                        <Project title="microtest.h" subtitle="C++ Library" url="https://github.com/torpedro/microtest.h" description="Lightweight header-only testing framework for C++ to start build test-cases in our application with minimal overhead." />
                                     </div>
                                 </div>
                             </div>
