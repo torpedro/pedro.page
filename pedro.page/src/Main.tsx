@@ -77,6 +77,10 @@ export class Main extends React.Component<IMainProps, IMainState> {
     }
 
     componentDidMount() {
+        // TODO: investigate whether we can use this again
+        // it was not working well on iPhone Chrome
+        return null;
+
         let self = this;
         window.addEventListener('wheel', function (ev : WheelEvent) {
             self.y_scroll += ev.deltaY;
