@@ -70,8 +70,8 @@ $content-height-tiny: 150px;
   position: relative;
   top: 0px;
   left: 0px;
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  // width: 100%;
 
   #vert-centered {
     position: relative;
@@ -85,23 +85,11 @@ $content-height-tiny: 150px;
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
-    min-height: calc(#{$content-height-large} + 20px);
 
-    @media screen and (max-height: 400px) {
-      $black-border-height: 50px;
-      height: calc(100% - 2 * #{$black-border-height});
-      top: $black-border-height;
-    }
-    @media screen and (min-height: 400px) and (max-height: 650px) {
-      $black-border-height: 75px;
-      height: calc(100% - 2 * #{$black-border-height});
-      top: $black-border-height;
-    }
-    @media screen and (min-height: 650px) {
-      $black-border-height: 100px;
-      height: calc(100% - 2 * #{$black-border-height});
-      top: $black-border-height;
-    }
+    min-height: calc(#{$content-height-large} + 100px);
+    height: 100%;
+    // height: calc(#{$content-height-large} + 100px);
+    border-bottom: 10px solid #111;
 
     #content {
       position: relative;
