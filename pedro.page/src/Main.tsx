@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Project } from "./Project";
 import './Main.scss'
 
 export interface IMainProps {
@@ -11,7 +10,6 @@ interface IMainState {
 }
 
 export class Main extends React.Component<IMainProps, IMainState> {
-    active : Project | null = null
     brand = React.createRef<HTMLDivElement>()
     more = React.createRef<HTMLDivElement>()
     content = React.createRef<HTMLDivElement>()
