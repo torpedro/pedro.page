@@ -46,7 +46,7 @@ body:after{
       left: 0;
       right: 0;
       z-index: -1;
-      background: url('images/city-of-london-1920.jpg');
+      background: url('assets/images/city-of-london-1920.jpg');
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -78,7 +78,7 @@ $more-width-large: $content-width-large - (2 * $corner-size);
 $more-width-small: $content-width-small - (2 * $corner-size);
 $more-width-tiny: $content-width-tiny - (2 * $corner-size);
 
-#app {
+#index {
     height: 100%;
     #main {
         height: 100vh;
@@ -291,27 +291,27 @@ $more-width-tiny: $content-width-tiny - (2 * $corner-size);
         opacity: 0.75;
 
         &.github {
-            background-image: url('images/github-light-64px.png');
+            background-image: url('assets/images/github-light-64px.png');
             background-position-y: 8px;
             width: 40px;
             height: 52px;
         }
         &.linkedin {
-            background-image: url('images/linkedin-white-34px.png');
+            background-image: url('assets/images/linkedin-white-34px.png');
             background-position-y: 11px;
 
             width: 30px;
             height: 42px;
         }
         &.instagram {
-            background-image: url('images/instagram-dark.png');
+            background-image: url('assets/images/instagram-dark.png');
             background-position-y: 8px;
             filter: invert(100%) brightness(150%);
             -webkit-filter: invert(100%) brightness(150%);
         }
 
         &.github-large {
-            background-image: url('images/github-light-120px.png');
+            background-image: url('assets/images/github-light-120px.png');
             background-position-y: 0px;
             width: 120px;
             height: 120px;

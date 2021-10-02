@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Project } from "./Project";
+import './Main.scss'
 
 export interface IMainProps {
 }

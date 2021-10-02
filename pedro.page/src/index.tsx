@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/index.scss';
+import './index.scss';
 import { Main } from "./Main";
 
 export class App {
@@ -9,7 +9,7 @@ export class App {
     }
 
     private render(): void {
-        ReactDOM.render(React.createElement(Main, {}), document.getElementById("app"));
+        ReactDOM.render(React.createElement(Main, {}), document.getElementById("index"));
     }
 }
 
