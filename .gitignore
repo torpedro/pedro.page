@@ -5,3 +5,11 @@ public/
 bundle.js
 src/bundle.js
 google*.html
+
+node_modules
+.cache
+dist
+yarn.lock
+debug.log
+prod
+dev
