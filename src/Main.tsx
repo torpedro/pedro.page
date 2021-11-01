@@ -29,7 +29,6 @@ export class Main extends React.Component<IProps, IState> {
                                     <div id="icons">
                                         <a className="icon linkedin" href="https://www.linkedin.com/in/pedroflemming"></a>
                                         <a className="icon github" href="https://github.com/torpedro"></a>
-                                        {/* <a className="icon instagram" href="https://www.instagram.com/pedros.pictures/"></a> */}
                                     </div>
                                 </div>
                             </div>
