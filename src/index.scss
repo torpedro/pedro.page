@@ -68,7 +68,7 @@ $content-height-tiny: 150px;
 
 #vert-center-container {
   position: relative;
-  top: 0px;
+  top: 12%;
   left: 0px;
   height: 75%;
   // width: 100%;
@@ -89,6 +89,7 @@ $content-height-tiny: 150px;
     min-height: calc(#{$content-height-large} + 100px);
     height: 100%;
     // height: calc(#{$content-height-large} + 100px);
+    border-top: 10px solid #111;
     border-bottom: 10px solid #111;
 
     #content {
