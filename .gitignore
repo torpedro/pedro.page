@@ -18,3 +18,4 @@ dev
 *.cjs
 *.mjs
 .yarn
+.yarnrc.yml
