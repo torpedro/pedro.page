@@ -13,3 +13,8 @@ yarn.lock
 debug.log
 prod
 dev
+
+.parcel-cache
+*.cjs
+*.mjs
+.yarn
