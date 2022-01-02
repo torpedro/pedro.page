@@ -73,6 +73,11 @@ $content-height-tiny: 150px;
   height: 75%;
   // width: 100%;
 
+  @media #{"screen and (max-height: #{($content-height-large + 100px) * 1.33})"} {
+    top: 0%;
+    height: calc(100% - 20px);
+  }
+
   #vert-centered {
     position: relative;
     background: url('assets/images/city-of-london-1920.jpg');
@@ -86,9 +91,8 @@ $content-height-tiny: 150px;
     background-position-x: center;
     background-position-y: center;
 
-    min-height: calc(#{$content-height-large} + 100px);
+    min-height: #{$content-height-large + 100px};
     height: 100%;
-    // height: calc(#{$content-height-large} + 100px);
     border-top: 10px solid #111;
     border-bottom: 10px solid #111;
 
@@ -118,7 +122,6 @@ $content-height-tiny: 150px;
         position: relative;
         top: 0px;
         left: 0px;
-        transition: 1s;
         background-color: rgba(0, 0, 0, 0.7);
 
         > div {
@@ -133,7 +136,6 @@ $content-height-tiny: 150px;
 
 #brand {
   transform: translateZ(0px);
-  transition: 1s;
 
   #name {
     display: block;
