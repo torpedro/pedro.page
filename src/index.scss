@@ -42,7 +42,8 @@ h1, h2, h3, a, p {
 
 body {
   scrollbar-width: none;
-  background: #222;
+  // background: #222;
+  background: black
 }
 
 ::-webkit-scrollbar {
@@ -78,14 +79,9 @@ $content-height-tiny: 150px;
   top: 12%;
   left: 0px;
   height: 75%;
-  // width: 100%;
-
-  @media #{"screen and (max-height: #{($content-height-large + 100px) * 1.33})"} {
-    top: 0%;
-    height: calc(100% - 20px);
-  }
 
   #vert-centered {
+
     position: relative;
     background: url('assets/images/city-of-london-1920.jpg');
     // border-top: 5px black solid;
@@ -100,8 +96,6 @@ $content-height-tiny: 150px;
 
     min-height: #{$content-height-large + 100px};
     height: 100%;
-    border-top: 10px solid #111;
-    border-bottom: 10px solid #111;
 
     #content {
       position: relative;
