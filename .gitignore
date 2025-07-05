@@ -19,3 +19,6 @@ dev
 *.mjs
 .yarn
 .yarnrc.yml
+package-lock.json
+
+src/*.css

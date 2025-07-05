@@ -1,23 +1,7 @@
 # pedro.page
 
-## Prerequisites
+Run `npm install` to install dependencies listed in `package.json`.
 
- * Yarn
+Local development: `npm run start`
 
-## JS Dependencies
-
-Run `yarn install` to install dependencies listed in `package.json`.
-
-Dependencies are
-
- * TypeScript
- * React + ReactDOM (+ typings)
- * Parcel
-
-## Local Test
-
-`yarn run start`
-
-## Deploy
-
-`yarn run build`
+Deploy to production: `npm run build`
