@@ -22,3 +22,4 @@ dev
 package-lock.json
 
 src/*.css
+.codex

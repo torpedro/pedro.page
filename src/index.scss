@@ -1,213 +1,176 @@
-@mixin full-page {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
+$text-primary: rgb(235, 238, 241);
+$text-secondary: rgb(196, 201, 209);
+$panel-background: rgba(10, 14, 20, 0.48);
+$panel-border: rgba(255, 255, 255, 0.14);
+$shadow-color: rgba(0, 0, 0, 0.28);
+$focus-ring: rgba(255, 255, 255, 0.3);
 
-$text-color: rgb(200, 200, 200);
-$hover-text-color: white;
-
-html,
-body,
-div#root {
-  @include full-page;
-  margin: 0;
-  padding: 0;
-
-  font-family: 'Raleway';
-  color: $text-color;
+html {
+  box-sizing: border-box;
+  min-height: 100%;
+  font-family: "Raleway", sans-serif;
+  color: $text-primary;
   font-weight: 300;
-  height: 100%;
+  background: #000;
 }
 
-div, a {
-  margin: 0px auto;
-  padding: 0px;
-}
-
-a {
-  text-decoration: none;
-  color: $text-color;
-  font-weight: 300;
-}
-
-h1, h2, h3, a, p {
-  display: block;
-  margin: auto;
-  padding: auto;
-  font-weight: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.46)),
+    url("assets/images/city-of-london-1920.jpg") center / cover no-repeat fixed;
   scrollbar-width: none;
-  // background: #222;
-  background: black
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
+  width: 0;
+  background: transparent;
 }
 
-$large-w: 450px;
-$small-w: 390px;
-
-$tiny: "screen and (max-width: #{$small-w})";
-$small: "screen and (min-width: #{$small-w}) and (max-width: #{$large-w})";
-$large: "screen and (min-width: #{$large-w})";
-
-$content-width-tiny: 300px;
-$content-width-small: 360px;
-$content-width-large: 400px;
-$content-height-large: 180px;
-$content-height-small: 170px;
-$content-height-tiny: 150px;
-
-#index {
-  height: 100%;
-
-  #main {
-    height: 100%;
-    text-align: center;
-  }
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-#vert-center-container {
-  position: relative;
-  top: 12%;
-  left: 0px;
-  height: 75%;
-
-  #vert-centered {
-
-    position: relative;
-    background: url('assets/images/city-of-london-1920.jpg');
-    // border-top: 5px black solid;
-    // border-bottom: 5px black solid;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
-
-    min-height: #{$content-height-large + 100px};
-    height: 100%;
-
-    #content {
-      position: relative;
-
-      top: 48%;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-
-      @media #{$large} {
-        width: $content-width-large;
-        height: $content-height-large;
-      }
-      @media #{$small} {
-        width: $content-width-small;
-        height: $content-height-small;
-      }
-      @media screen and (max-width: $small-w){
-        width: $content-width-tiny;
-        height: $content-height-tiny;
-      }
-
-      > div {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        top: 0px;
-        left: 0px;
-        background-color: rgba(0, 0, 0, 0.7);
-
-        > div {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-  }
+p,
+h1 {
+  margin: 0;
 }
 
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
 
-#brand {
-  transform: translateZ(0px);
+.hero {
+  width: min(100%, 960px);
+  display: flex;
+  justify-content: center;
+}
 
-  #name {
-    display: block;
-    padding: 15px 5px 20px 5px;
+.hero__panel {
+  width: min(100%, 440px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 28px 26px 24px;
+  text-align: left;
+  background: $panel-background;
+  border: 1px solid $panel-border;
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 22px 56px $shadow-color;
+}
 
-    @media #{$large} {
-      padding-bottom: 20px;
+.hero__header {
+  display: grid;
+  gap: 8px;
+}
 
-      h1 {
-        font-size: 40px;
-      }
-      h2 {
-        font-size: 20px;
-      }
-    }
+.hero__header h1 {
+  font-size: clamp(2.35rem, 6vw, 3.8rem);
+  line-height: 0.96;
+  letter-spacing: 0.02em;
+  font-weight: 300;
+  white-space: nowrap;
+}
 
-    @media #{$small} {
-      padding-bottom: 15px;
+.hero__subtitle {
+  font-size: clamp(0.92rem, 2.1vw, 1.16rem);
+  line-height: 1.45;
+  color: $text-secondary;
+  font-weight: 300;
+  max-width: none;
+  white-space: nowrap;
+}
 
-      h1 {
-        font-size: 36px;
-      }
-      h2 {
-        font-size: 18px;
-      }
-    }
-    @media #{$tiny} {
-      padding-bottom: 10px;
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
 
-      h1 {
-        font-size: 32px;
-      }
-      h2 {
-        font-size: 16px;
-      }
-    }
+.social-links__item {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  background-size: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.78;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.social-links__item:hover,
+.social-links__item:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.social-links__item:focus-visible {
+  outline: 2px solid $focus-ring;
+  outline-offset: 3px;
+}
+
+.social-links__item--github {
+  background-image: url("assets/images/github-light-64px.png");
+  background-size: 24px;
+}
+
+.social-links__item--linkedin {
+  background-image: url("assets/images/linkedin-white-34px.png");
+  background-size: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .site-shell {
+    padding: 20px;
   }
 
-}
+  .hero__panel {
+    width: 100%;
+    gap: 18px;
+    padding: 24px 20px 20px;
+    border-radius: 16px;
+  }
 
-#icons {
-  text-align: center;
+  .hero__header h1 {
+    white-space: normal;
+  }
 
-  a.icon {
-    margin: auto;
-    display: inline-block;
-    width: 26px;
+  .hero__subtitle {
+    white-space: normal;
+  }
+
+  .social-links {
+    gap: 8px;
+  }
+
+  .social-links__item {
+    width: 40px;
     height: 40px;
-    margin: 0px 30px;
-
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    opacity: 0.75;
-
-    &.github {
-      background-image: url('assets/images/github-light-64px.png');
-      background-position-y: 8px;
-      width: 40px;
-      height: 52px;
-    }
-    &.linkedin {
-      background-image: url('assets/images/linkedin-white-34px.png');
-      background-position-y: 11px;
-
-      width: 40px;
-      height: 52px;
-    }
-
-    &:hover {
-      opacity: 1.0;
-    }
   }
 }
