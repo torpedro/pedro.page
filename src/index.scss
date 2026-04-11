@@ -59,40 +59,40 @@ h1 {
 }
 
 .hero__panel {
-  width: min(100%, 440px);
+  width: fit-content;
+  max-width: min(100%, 32rem);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 22px;
-  padding: 28px 26px 24px;
+  padding: 24px 34px 22px;
   text-align: left;
   background: $panel-background;
   border: 1px solid $panel-border;
-  border-radius: 18px;
   backdrop-filter: blur(14px);
   box-shadow: 0 22px 56px $shadow-color;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
+  animation: hero-enter 700ms cubic-bezier(0.18, 0.82, 0.22, 1) 120ms both;
 }
 
 .hero__header {
   display: grid;
   gap: 8px;
+  animation: content-enter 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 220ms both;
 }
 
 .hero__header h1 {
-  font-size: clamp(2.35rem, 6vw, 3.8rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 0.96;
   letter-spacing: 0.02em;
   font-weight: 300;
-  white-space: nowrap;
 }
 
 .hero__subtitle {
-  font-size: clamp(0.92rem, 2.1vw, 1.16rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.08rem);
   line-height: 1.45;
   color: $text-secondary;
   font-weight: 300;
-  max-width: none;
-  white-space: nowrap;
 }
 
 .social-links {
@@ -100,6 +100,7 @@ h1 {
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+  animation: content-enter 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 320ms both;
 }
 
 .social-links__item {
@@ -145,24 +146,58 @@ h1 {
   background-size: 20px;
 }
 
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__panel,
+  .hero__header,
+  .social-links,
+  .social-links__item {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .hero__header h1,
+  .hero__subtitle {
+    white-space: nowrap;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .site-shell {
     padding: 20px;
   }
 
   .hero__panel {
-    width: 100%;
+    width: fit-content;
+    max-width: min(100%, 28rem);
     gap: 18px;
-    padding: 24px 20px 20px;
-    border-radius: 16px;
-  }
-
-  .hero__header h1 {
-    white-space: normal;
-  }
-
-  .hero__subtitle {
-    white-space: normal;
+    padding: 22px 24px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
   }
 
   .social-links {
