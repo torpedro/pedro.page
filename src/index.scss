@@ -89,10 +89,6 @@ h1 {
   will-change: transform, box-shadow;
 }
 
-.hero__panel--enter {
-  animation: hero-enter 700ms cubic-bezier(0.18, 0.82, 0.22, 1) 120ms both;
-}
-
 .hero__panel--wobble {
   animation: hero-wobble-3d 1040ms linear;
 }
@@ -100,7 +96,6 @@ h1 {
 .hero__header {
   display: grid;
   gap: 8px;
-  animation: content-enter 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 220ms both;
 }
 
 .hero__header h1 {
@@ -122,7 +117,6 @@ h1 {
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  animation: content-enter 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 320ms both;
 }
 
 .social-links__item {
@@ -168,28 +162,29 @@ h1 {
   background-size: 20px;
 }
 
-@keyframes hero-enter {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.985);
+@keyframes hero-idle-wobble {
+  0%, 50%, 100% {
+    transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
+    box-shadow: $panel-shadow-rest;
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  6.25%  { transform: perspective(1200px) rotateX(2.48deg) rotateY(1.88deg); }
+  12.5%  { transform: perspective(1200px) rotateX(3.5deg)  rotateY(3.47deg); }
+  18.75% { transform: perspective(1200px) rotateX(2.48deg) rotateY(4.53deg); }
+  25%    { transform: perspective(1200px) rotateX(0deg)    rotateY(4.9deg); }
+  31.25% { transform: perspective(1200px) rotateX(-2.48deg) rotateY(4.53deg); }
+  37.5%  { transform: perspective(1200px) rotateX(-3.5deg) rotateY(3.47deg); }
+  43.75% { transform: perspective(1200px) rotateX(-2.48deg) rotateY(1.88deg); }
+  56.25% { transform: perspective(1200px) rotateX(2.48deg) rotateY(-1.88deg); }
+  62.5%  { transform: perspective(1200px) rotateX(3.5deg)  rotateY(-3.47deg); }
+  68.75% { transform: perspective(1200px) rotateX(2.48deg) rotateY(-4.53deg); }
+  75%    { transform: perspective(1200px) rotateX(0deg)    rotateY(-4.9deg); }
+  81.25% { transform: perspective(1200px) rotateX(-2.48deg) rotateY(-4.53deg); }
+  87.5%  { transform: perspective(1200px) rotateX(-3.5deg) rotateY(-3.47deg); }
+  93.75% { transform: perspective(1200px) rotateX(-2.48deg) rotateY(-1.88deg); }
 }
 
-@keyframes content-enter {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero__panel--idle {
+  animation: hero-idle-wobble 8s linear infinite;
 }
 
 @keyframes hero-wobble-3d {
@@ -251,15 +246,12 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__panel,
-  .hero__header,
-  .social-links,
   .social-links__item {
-    animation: none;
     transition: none;
   }
 
-  .hero__panel--wobble {
+  .hero__panel--wobble,
+  .hero__panel--idle {
     animation: none;
   }
 }

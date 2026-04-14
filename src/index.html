@@ -11,7 +11,7 @@
 <body>
   <main class="site-shell">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__panel hero__panel--enter" tabindex="0">
+      <div class="hero__panel" tabindex="0">
         <header class="hero__header">
           <h1 id="hero-title">Pedro Flemming</h1>
           <p class="hero__subtitle">Software Engineer in London, UK</p>
@@ -36,39 +36,6 @@
       </div>
     </section>
   </main>
-  <script>
-    const heroPanel = document.querySelector(".hero__panel");
-
-    if (heroPanel) {
-      const triggerWobble = (event) => {
-        const rect = heroPanel.getBoundingClientRect();
-        const clientX = event.clientX ?? rect.left + rect.width / 2;
-        const clientY = event.clientY ?? rect.top + rect.height / 2;
-        const normalizedX = (clientX - rect.left) / rect.width - 0.5;
-        const normalizedY = (clientY - rect.top) / rect.height - 0.5;
-        const rotateY = normalizedX * 26;
-        const rotateX = normalizedY * -26;
-
-        heroPanel.style.setProperty("--wobble-rotate-x", `${rotateX.toFixed(2)}deg`);
-        heroPanel.style.setProperty("--wobble-rotate-y", `${rotateY.toFixed(2)}deg`);
-        heroPanel.classList.remove("hero__panel--wobble");
-
-        window.requestAnimationFrame(() => {
-          heroPanel.classList.add("hero__panel--wobble");
-        });
-      };
-
-      heroPanel.addEventListener("pointerup", triggerWobble);
-      heroPanel.addEventListener("animationend", (event) => {
-        if (event.animationName === "hero-enter") {
-          heroPanel.classList.remove("hero__panel--enter");
-        }
-
-        if (event.animationName === "hero-wobble-3d") {
-          heroPanel.classList.remove("hero__panel--wobble");
-        }
-      });
-    }
-  </script>
+  <script type="module" src="./index.ts"></script>
 </body>
 </html>
