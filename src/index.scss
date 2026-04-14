@@ -71,6 +71,9 @@ h1 {
 .hero__panel {
   --wobble-rotate-x: 0deg;
   --wobble-rotate-y: 0deg;
+  --light-x: 50%;
+  --light-y: 50%;
+  position: relative;
   width: fit-content;
   max-width: min(100%, 32rem);
   display: flex;
@@ -87,6 +90,25 @@ h1 {
   transform-origin: center center;
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
+}
+
+.hero__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--light-x) var(--light-y),
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    transparent 40%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+.hero__panel--light-on::before {
+  opacity: 1;
 }
 
 .hero__panel--wobble {
@@ -161,6 +183,7 @@ h1 {
   background-image: url("assets/images/linkedin-white-34px.png");
   background-size: 20px;
 }
+
 
 @keyframes hero-idle-wobble {
   0%, 50%, 100% {

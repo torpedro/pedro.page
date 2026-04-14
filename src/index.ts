@@ -31,6 +31,19 @@ if (heroPanel) {
     });
   };
 
+  heroPanel.addEventListener("pointermove", (event: PointerEvent) => {
+    heroPanel.classList.add("hero__panel--light-on");
+    const rect = heroPanel.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    heroPanel.style.setProperty("--light-x", `${x.toFixed(1)}%`);
+    heroPanel.style.setProperty("--light-y", `${y.toFixed(1)}%`);
+  });
+
+  heroPanel.addEventListener("pointerleave", () => {
+    heroPanel.classList.remove("hero__panel--light-on");
+  });
+
   heroPanel.addEventListener("pointerup", triggerWobble);
   heroPanel.addEventListener("animationend", (event: AnimationEvent) => {
     if (event.animationName === "hero-wobble-3d") {
