@@ -1,10 +1,12 @@
 {
   "scripts": {
     "dev": "vite",
+    "typecheck": "tsc --noEmit",
     "build": "vite build"
   },
   "devDependencies": {
     "sass": "^1.26.11",
+    "typescript": "^5.9.3",
     "vite": "^6.3.2"
   },
   "packageManager": "npm@9.0.0"
