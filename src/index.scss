@@ -10,6 +10,15 @@ $panel-shadow: rgba(0, 0, 0, 0.18);
 $panel-shadow-deep: rgba(0, 0, 0, 0.28);
 $focus-ring: rgba(255, 232, 208, 0.28);
 
+@mixin city-background($variant) {
+  $overlay: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.46));
+  background-image: $overlay, url("assets/images/city-of-london-#{$variant}.webp");
+  background-image: $overlay, image-set(
+    "assets/images/city-of-london-#{$variant}.avif" type("image/avif"),
+    "assets/images/city-of-london-#{$variant}.webp" type("image/webp")
+  );
+}
+
 html {
   box-sizing: border-box;
   min-height: 100%;
@@ -29,10 +38,18 @@ body {
   margin: 0;
   min-height: 100vh;
   min-height: 100svh;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.46)),
-    url("assets/images/city-of-london-1920.jpg") center / cover no-repeat;
+  @include city-background("1920");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   scrollbar-width: none;
+}
+
+// The centered 2:3 crop preserves the framing at these viewport proportions.
+@media screen and (max-width: 640px) and (max-aspect-ratio: 2/3) {
+  body {
+    @include city-background("mobile");
+  }
 }
 
 
