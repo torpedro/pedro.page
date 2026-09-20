@@ -1,17 +1,23 @@
 const heroPanel = document.querySelector<HTMLElement>(".hero__panel");
 
 if (heroPanel) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const IDLE_DELAY_MS = 800;
   let idleTimer: ReturnType<typeof setTimeout> | null = null;
 
   const startIdleTimer = () => {
-    if (idleTimer) clearTimeout(idleTimer);
+    if (idleTimer !== null) clearTimeout(idleTimer);
     idleTimer = setTimeout(() => {
+      idleTimer = null;
       heroPanel.classList.add("hero__panel--idle");
     }, IDLE_DELAY_MS);
   };
 
   const triggerWobble = (event: PointerEvent) => {
+    if (idleTimer !== null) {
+      clearTimeout(idleTimer);
+      idleTimer = null;
+    }
     heroPanel.classList.remove("hero__panel--idle");
 
     const rect = heroPanel.getBoundingClientRect();
@@ -44,7 +50,15 @@ if (heroPanel) {
     heroPanel.classList.remove("hero__panel--light-on");
   });
 
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) {
+      heroPanel.querySelectorAll(".ripple").forEach((ripple) => ripple.remove());
+    }
+  });
+
   heroPanel.addEventListener("pointerdown", (event: PointerEvent) => {
+    if (reducedMotion.matches) return;
+
     const rect = heroPanel.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height) * 2;
     const x = event.clientX - rect.left - size / 2;
